@@ -1,9 +1,11 @@
 %h2 Create an Application
 
 = semantic_form_for @app do |f|
-  = f.input :company
-  = f.input :location
-  = f.input :url
-  = f.input :applied_on, :as => :text
-  = f.input :status
+  = f.inputs :name => "Basic" do
+    = f.input :company
+    = f.input :location
+    = f.input :url
+    = f.input :applied_on, :as => :text
+    = f.input :status
+
   = f.submit "Save"
