@@ -1,0 +1,7 @@
+
+#applications
+  = link_to "Create a New Application", new_application_path, :id => 'new_application'
+
+  %h2 Applications
+
+  = render :partial => 'application', :collection => @applications

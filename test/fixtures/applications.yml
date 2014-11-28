@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: MyString
+  location: MyString
+  url: MyString
+  applied_on: 2014-11-28
+  status: MyString
+
+two:
+  company: MyString
+  location: MyString
+  url: MyString
+  applied_on: 2014-11-28
+  status: MyString
