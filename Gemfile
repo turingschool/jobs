@@ -21,6 +21,7 @@ gem 'deject'                                           # dependency injection
 
 group :development, :test do
   gem 'minitest'
+  gem 'minitest-emoji'
   gem 'capybara'
   gem 'pry'
   gem 'launchy'
