@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
   resource  :dashboard
-  resources :applications
+  resources :applications do
+    resources :steps
+  end
 end
