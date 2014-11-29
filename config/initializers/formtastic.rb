@@ -108,3 +108,5 @@ Formtastic::FormBuilder.action_class_finder = Formtastic::ActionClassFinder
 # Define custom namespaces in which to look up your Action classes. Default is
 # to look up in the global scope and in Formtastic::Actions.
 # Formtastic::FormBuilder.action_namespaces = [ ::Object, ::MyActionsModule, ::Formtastic::Actions ]
+
+Formtastic::Helpers::FormHelper.builder = FormtasticBootstrap::FormBuilder

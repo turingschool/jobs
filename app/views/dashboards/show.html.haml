@@ -4,4 +4,11 @@
 
   %h2 Applications
 
-  = render :partial => 'application', :collection => @applications
+  %table{:class => "table table-striped"}
+    %thead
+      %tr
+        %th Company
+        %th Status
+        %th Steps
+        %th Actions
+    = render :partial => 'application', :collection => @applications

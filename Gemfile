@@ -12,12 +12,12 @@ gem 'thin'
 gem 'haml'
 gem 'redcarpet'
 gem 'formtastic'
+gem 'formtastic-bootstrap'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'jsl-identity', '= 0.0.7', require: 'jsl/identity' # for accessing user identities (comes from Gemfury)
 gem 'deject'                                           # dependency injection
-gem 'foundation-rails'
 
 group :development, :test do
   gem 'minitest'
@@ -25,6 +25,7 @@ group :development, :test do
   gem 'capybara'
   gem 'pry'
   gem 'launchy'
+  gem "twitter-bootstrap-rails"
 end
 
 group :production do
