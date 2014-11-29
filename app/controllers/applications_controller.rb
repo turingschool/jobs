@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
   def new
-    @app = Application.new
+    @app = Application.new(:status => Application.statuses.first)
   end
 
   def create

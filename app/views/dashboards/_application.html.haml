@@ -1,14 +1,9 @@
 .application{id: "application_#{application.id}"}
   %h3= application.company
   %ul
-    %li= application.location
-    %li= application.url
-    %li= application.applied_on
     %li= application.status
-  %ul.steps
-    - application.steps.each do |step|
-      %li
-        %em= step.kind
-        = step.note
-  
-  = link_to "Add a Step", new_application_step_path(application), :id => 'add_step'
+    %ul.steps
+      - application.steps.each do |step|
+        %li
+          %em= step.kind
+      %li= link_to "Add a Step", new_application_step_path(application), :id => 'add_step'

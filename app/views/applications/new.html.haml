@@ -5,7 +5,7 @@
     = f.input :company
     = f.input :location
     = f.input :url
-    = f.input :applied_on, :as => :string
-    = f.input :status
+    = f.input :applied_on, :as => :string, :input_html => { :value => Date.today }
+    = f.input :status, :as => :select, :collection => Application.statuses
 
   = f.submit "Save"
