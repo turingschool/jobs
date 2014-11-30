@@ -1,11 +1,15 @@
 class StepsController < ApplicationController
-  def new
+  before_action :load_application
+
+  def load_application
     @application = Application.find(params[:application_id])
+  end
+
+  def new
     @step = @application.steps.new
   end
 
   def create
-    @application = Application.find(params[:application_id])
     @step = @application.steps.new(
       :kind => params[:step][:kind],
       :note => params[:step][:note]
@@ -19,12 +23,10 @@ class StepsController < ApplicationController
   end
 
   def edit
-    @application = Application.find(params[:application_id])
     @step = @application.steps.find(params[:id])
   end
 
   def update
-    @application = Application.find(params[:application_id])
     @step = @application.steps.find(params[:id])
     @step.kind = params[:step][:kind]
     @step.note = params[:step][:note]
@@ -34,5 +36,11 @@ class StepsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @step = @application.steps.find(params[:id])
+    @step.destroy
+    redirect_to @application
   end
 end

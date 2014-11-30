@@ -22,5 +22,6 @@
       = markdown(step.note)
       %ul.actions
         %li= link_to "Edit", edit_application_step_path(@application, step), :id => "edit_step_#{step.id}"
+        %li= link_to "Delete", application_step_path(@application, step), :id => "delete_step_#{step.id}", :method => :delete
 
   = link_to "Add a Step", new_application_step_path(@application), :id => 'add_step'
