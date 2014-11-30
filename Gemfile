@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 fury_url = ENV['GEMFURY_URL']
 source fury_url if fury_url
 
+ruby '2.1.2'
 gem 'rails', '4.1.8'
 gem 'pg'
 gem 'sass-rails', '4.0.3'
