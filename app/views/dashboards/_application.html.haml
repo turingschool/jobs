@@ -6,7 +6,6 @@
       - application.steps.each do |step|
         %li
           %span{:class => "label #{label_for(step.kind)}"}= step.kind
-      %li= link_to "Add", new_application_step_path(application), :id => 'add_step'
   %td
     = link_to 'edit', edit_application_path(application)
     = link_to 'remove', application_path(application), :method => :delete

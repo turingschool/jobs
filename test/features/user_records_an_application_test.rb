@@ -40,4 +40,32 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
 
     assert page.has_content? app.url
   end
+
+  def test_editing_the_details_of_an_application
+    app = Application.create!(:company => "Basecamp",
+                              :url => "http://basecamp.com",
+                              :location => "Chicago, IL",
+                              :status => "open")
+
+    visit application_path(app)
+    click_link_or_button("edit_application_#{app.id}")
+
+    fill_in 'application_company', :with => "Trello"
+    fill_in 'application_location', :with => "New York, NY"
+    fill_in 'application_url', :with => "http://gettrello.com"
+    select "dead", :from => 'application_status'
+    click_link_or_button 'Save'
+
+    refute page.has_content? "Basecamp"
+    assert page.has_content? "Trello"
+
+    refute page.has_content? "Chicago, IL"
+    assert page.has_content? "New York, NY"
+
+    refute page.has_content? "http://basecamp.com"
+    assert page.has_content? "http://gettrello.com"
+
+    refute page.has_content? "open"
+    assert page.has_content? "dead"
+  end
 end

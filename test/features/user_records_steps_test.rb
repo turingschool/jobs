@@ -3,9 +3,9 @@ require './test/test_helper'
 class UserRecordsSteps < ActionDispatch::IntegrationTest
   def test_user_adds_a_step
     app = Application.create(:company => "Basecamp", :status => "open")
+    visit application_path(app)
 
-    visit dashboard_path
-    within("#application_#{app.id}") do
+    within(".application") do
       click_link_or_button 'add_step'
     end
 
