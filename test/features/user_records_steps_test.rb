@@ -2,7 +2,7 @@ require './test/test_helper'
 
 class UserRecordsSteps < ActionDispatch::IntegrationTest
   def test_user_adds_a_step
-    app = Application.create(:company => "Basecamp")
+    app = Application.create(:company => "Basecamp", :status => "open")
 
     visit dashboard_path
     within("#application_#{app.id}") do
@@ -13,7 +13,7 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
     fill_in 'step_note', :with => "They're not hiring. Bummer!"
     click_link_or_button 'Save'
 
-    within("#application_#{app.id}") do
+    within(".application") do
       assert page.has_content? "Basecamp"
       assert page.has_content? "Bummer!"
     end

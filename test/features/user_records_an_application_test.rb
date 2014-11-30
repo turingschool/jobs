@@ -27,4 +27,17 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
 
     assert page.has_field? 'application_company'
   end
+
+  def test_viewing_the_details_of_an_application
+    app = Application.create!(:company => "Basecamp",
+                              :url => "http://basecamp.com",
+                              :status => "open")
+
+    visit dashboard_path
+    within("#application_#{app.id}") do
+      click_link_or_button app.company
+    end
+
+    assert page.has_content? app.url
+  end
 end

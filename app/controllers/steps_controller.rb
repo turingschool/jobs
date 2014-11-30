@@ -12,7 +12,7 @@ class StepsController < ApplicationController
     )
 
     if @step.save
-      redirect_to dashboard_path
+      redirect_to @application
     else
       render :new
     end

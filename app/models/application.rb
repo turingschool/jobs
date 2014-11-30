@@ -1,5 +1,6 @@
 class Application < ActiveRecord::Base
   validates_presence_of :company
+  validates_presence_of :status
 
   has_many :steps
 
