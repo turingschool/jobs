@@ -1,8 +1,4 @@
 %h2= "Add a Step for #{@application.company}"
 
 = semantic_form_for @step, :url => application_steps_path(@application.id) do |f|
-  = f.inputs :name => 'Application Step' do
-    = f.input :kind, :as => :select, :collection => Step.kinds
-    = f.input :note
-
-  = f.submit "Save"
+  = render :partial => 'form', :locals => {:f => f}

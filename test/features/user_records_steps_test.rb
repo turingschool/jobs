@@ -19,4 +19,24 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
     end
   end
 
+  def test_user_edits_a_step
+    app = Application.create(:company => "Basecamp", :status => "open")
+    step = app.steps.create(:kind => "feedback", :note => "They're hiring!")
+
+    visit application_path(app)
+    assert page.has_content? "They're hiring!"
+    assert page.has_content? "Feedback"
+
+    click_link_or_button "edit_step_#{step.id}"
+    select('code_challenge', :from => 'step_kind')
+    fill_in 'step_note', :with => "They're NOT hiring!"
+    click_link_or_button "Save"
+
+    refute page.has_content? "They're hiring!"
+    assert page.has_content? "They're NOT hiring!"
+
+    refute page.has_content? "Feedback"
+    assert page.has_content? "Code challenge"
+  end
+
 end

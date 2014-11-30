@@ -10,4 +10,14 @@ module ApplicationHelper
       'contracting' => 'label-success'
     }[kind]
   end
+
+  def markdown_renderer
+    @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+  end
+
+  def markdown(content)
+    if content
+      markdown_renderer.render(content).html_safe
+    end
+  end
 end

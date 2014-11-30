@@ -1,0 +1,5 @@
+= f.inputs :name => 'Application Step' do
+  = f.input :kind, :as => :select, :collection => Step.kinds
+  = f.input :note
+
+= f.submit "Save"

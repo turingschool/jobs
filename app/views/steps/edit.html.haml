@@ -1,0 +1,4 @@
+%h2= "Edit a Step for #{@application.company}"
+
+= semantic_form_for @step, :url => application_step_path(@application.id, @step.id) do |f|
+  = render :partial => 'form', :locals => {:f => f}
