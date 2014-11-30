@@ -1,8 +1,9 @@
+%h1 Your Jobs Dashboard
 
 #applications
-  = link_to "Create a New Application", new_application_path, :id => 'new_application'
-
   %h2 Applications
+
+  = button_to "Create a New Application", new_application_path, :id => 'new_application', :class => "btn btn-default", :method => :get
 
   %table{:class => "table table-striped"}
     %thead
