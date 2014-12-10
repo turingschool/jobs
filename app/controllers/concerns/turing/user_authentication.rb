@@ -1,5 +1,7 @@
 module Turing
   module UserAuthentication
+    extend ActiveSupport::Concern
+
     included do
       helper_method :logged_in?
       helper_method :current_user

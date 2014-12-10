@@ -3,4 +3,6 @@ class ApplicationController < ActionController::Base
 
   Deject self, :user_repository
   include Turing::UserAuthentication
+  before_action :require_login
+  before_action :require_invitation_or_admin
 end
