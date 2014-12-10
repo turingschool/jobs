@@ -1,10 +1,10 @@
 class ApplicationsController < ApplicationController
   def new
-    @app = Application.new(:status => Application.statuses.first)
+    @app = current_person.applications.new(:status => Application.statuses.first)
   end
 
   def create
-    @app = Application.new(
+    @app = current_person.applications.new(
       :company    => params[:application][:company],
       :location   => params[:application][:location],
       :url        => params[:application][:url],
@@ -20,15 +20,15 @@ class ApplicationsController < ApplicationController
   end
 
   def show
-    @application = Application.find(params[:id])
+    @application = current_person.applications.find(params[:id])
   end
 
   def edit
-    @app = Application.find(params[:id])
+    @app = current_person.applications.find(params[:id])
   end
 
   def update
-    @app = Application.find(params[:id])
+    @app = current_person.applications.find(params[:id])
 
     @app.company    = params[:application][:company]
     @app.location   = params[:application][:location]

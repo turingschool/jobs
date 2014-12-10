@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :applications do
     resources :steps
   end
+  resources :people
 
   root :to => "dashboards#show"
 end

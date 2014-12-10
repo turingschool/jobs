@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
   def show
-    @applications = Application.all
+    @applications = current_person.applications.all
   end
 end
