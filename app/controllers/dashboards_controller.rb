@@ -1,5 +1,7 @@
 class DashboardsController < ApplicationController
   def show
-    @applications = current_person.applications.all
+    unless current_person.kind_of? String
+      @applications = current_person.applications.all
+    end
   end
 end
