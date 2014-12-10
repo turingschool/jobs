@@ -2,7 +2,7 @@
   = f.inputs :name => "Basic" do
     = f.input :company
     = f.input :location
-    = f.input :url
+    = f.input :url, :label => "URL of the Job Posting"
     = f.input :applied_on, :as => :string, :input_html => { :value => Date.today }
     = f.input :status, :as => :select, :collection => Application.statuses
 
