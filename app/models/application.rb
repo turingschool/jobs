@@ -9,10 +9,10 @@ class Application < ActiveRecord::Base
   end
 
   def self.active
-    where.not(:status => 'dead')
+    where.not(:status => 'dead').order(:company)
   end
 
   def self.dead
-    where(:status => 'dead')
+    where(:status => 'dead').order(:company)
   end
 end
