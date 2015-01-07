@@ -42,4 +42,10 @@ class ApplicationsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    @app = current_person.applications.find(params[:id])
+    @app.destroy
+    redirect_to dashboard_path
+  end
 end

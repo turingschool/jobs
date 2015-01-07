@@ -7,4 +7,12 @@ class Application < ActiveRecord::Base
   def self.statuses
     %W(open waiting dead icebox offered)
   end
+
+  def self.active
+    where.not(:status => 'dead')
+  end
+
+  def self.dead
+    where(:status => 'dead')
+  end
 end
