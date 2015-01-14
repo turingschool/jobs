@@ -28,7 +28,7 @@ module Turing
 
     def require_login
       current_user
-    rescue Jsl::Identity::ResourceNotFound
+    # rescue Jsl::Identity::ResourceNotFound
       requested_url = Rack::Request.new(request.env).url
       redirect_to user_repository.login_url(requested_url)
     end
