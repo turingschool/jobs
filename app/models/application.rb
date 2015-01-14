@@ -5,22 +5,22 @@ class Application < ActiveRecord::Base
   has_many :steps
 
   def self.statuses
-    %W(to-apply in-progress applied closed )
+    %w(to-apply in-progress applied closed )
   end
 
   def self.to_apply
-    where(status: 'to-apply').order(:company)
+    where(status: "to-apply").order(:company)
   end
 
   def self.in_progress
-    where(status: 'in-progress').order(:company)
+    where(status: "in-progress").order(:company)
   end
 
   def self.applied
-    where(status: 'applied').order(:company)
+    where(status: "applied").order(:company)
   end
 
   def self.closed
-    where(status: 'closed').order(:company)
+    where(status: "closed").order(:company)
   end
 end
