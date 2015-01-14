@@ -13,7 +13,7 @@ module Turing
     end
 
     def current_user
-      @current_user ||= user_repository.find session[:user_id]
+      @current_user ||= Person.find(session[:user_id])
     end
 
     def current_person
@@ -28,7 +28,6 @@ module Turing
 
     def require_login
       current_user
-    # rescue Jsl::Identity::ResourceNotFound
       requested_url = Rack::Request.new(request.env).url
       redirect_to user_repository.login_url(requested_url)
     end
