@@ -20,6 +20,8 @@ gem 'mini_magick'
 gem 'deject'                                           # dependency injection
 gem "twitter-bootstrap-rails"
 gem "figaro"
+gem "omniauth"
+gem "omniauth-github"
 
 group :development, :test do
   gem 'minitest'
@@ -30,6 +32,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'minitest-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :production do
