@@ -17,8 +17,7 @@ gem 'formtastic-bootstrap'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
-gem 'jsl-identity', '= 0.0.7', require: 'jsl/identity' # for accessing user identities (comes from Gemfury)
-gem 'deject'                                           # dependency injection
+gem 'deject'                                           
 gem "twitter-bootstrap-rails"
 
 group :development, :test do

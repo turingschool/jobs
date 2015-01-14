@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://cwuHbMh42iUojm2muvpp@gem.fury.io/jumpstartlab/
   specs:
     CFPropertyList (2.2.8)
     actionmailer (4.1.8)
@@ -127,8 +126,6 @@ GEM
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jsl-identity (0.0.7)
-      surrogate (~> 0.7.0)
     json (1.8.1)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -200,7 +197,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    surrogate (0.7.0)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -235,7 +231,6 @@ DEPENDENCIES
   formtastic-bootstrap
   haml
   jquery-rails
-  jsl-identity (= 0.0.7)
   launchy
   mini_magick
   minitest

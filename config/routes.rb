@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :steps
   end
   resources :people
+  resources :home, only: [:index]
 
-  root :to => "dashboards#show"
+  root to: "home#index"
 end
