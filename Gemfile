@@ -19,6 +19,7 @@ gem 'fog'
 gem 'mini_magick'
 gem 'deject'                                           # dependency injection
 gem "twitter-bootstrap-rails"
+gem "figaro"
 
 group :development, :test do
   gem 'minitest'
