@@ -2,6 +2,7 @@
 class Application < ActiveRecord::Base
   validates_presence_of :company
   validates_presence_of :status
+  validates_presence_of :url
 
   has_many :steps
 

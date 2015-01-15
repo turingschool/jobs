@@ -1,7 +1,20 @@
 require './test/test_helper'
 
 class UserRecordsAnApplication < ActionDispatch::IntegrationTest
+  def test_user_creates_an_application_from_an_outside_website
+    visit outside_webpage
+    click bookmarklet
+    fill_in 'application_company', :with => "Basecamp"
+    fill_in 'application_location', :with => "Chicago, IL"
+    select 'open', :from => 'application_status'
+    within('#applications') do
+      assert page.has_content? "Basecamp"
+    end
+
+  end
+
   def test_user_creates_an_application
+    skip
     visit dashboard_path
     click_link_or_button 'new_application'
     fill_in 'application_company', :with => "Basecamp"
@@ -17,7 +30,8 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   end
 
   def test_an_application_with_no_company_is_rejected
-    visit dashboard_path
+    skip
+    isit dashboard_path
     click_link_or_button 'new_application'
     fill_in 'application_company', :with => ""
     fill_in 'application_location', :with => "Chicago, IL"
@@ -29,6 +43,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   end
 
   def test_viewing_the_details_of_an_application
+    skip
     app = Application.create!(:company => "Basecamp",
                               :url => "http://basecamp.com",
                               :status => "open")
@@ -42,6 +57,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   end
 
   def test_editing_the_details_of_an_application
+    skip
     app = Application.create!(:company => "Basecamp",
                               :url => "http://basecamp.com",
                               :location => "Chicago, IL",
