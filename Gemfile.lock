@@ -56,6 +56,8 @@ GEM
     eventmachine (1.0.3)
     excon (0.41.0)
     execjs (2.2.2)
+    figaro (1.0.0)
+      thor (~> 0.14)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.25.0)
@@ -155,6 +157,9 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack_session_access (0.1.1)
+      builder (>= 2.0.0)
+      rack (>= 1.0.0)
     rails (4.1.8)
       actionmailer (= 4.1.8)
       actionpack (= 4.1.8)
@@ -226,6 +231,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   deject
+  figaro
   fog
   formtastic
   formtastic-bootstrap
@@ -237,6 +243,7 @@ DEPENDENCIES
   minitest-emoji
   pg
   pry
+  rack_session_access
   rails (= 4.1.8)
   rails_12factor
   redcarpet

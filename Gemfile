@@ -17,8 +17,10 @@ gem 'formtastic-bootstrap'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
-gem 'deject'                                           
+gem 'deject'
 gem "twitter-bootstrap-rails"
+gem 'rack_session_access'
+gem 'figaro'
 
 group :development, :test do
   gem 'minitest'
