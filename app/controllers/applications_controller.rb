@@ -7,7 +7,7 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @app = current_person.applications.new(
+    @app = Application.new(
       :company    => params[:application][:company],
       :location   => params[:application][:location],
       :url        => params[:application][:url],
@@ -23,7 +23,7 @@ class ApplicationsController < ApplicationController
   end
 
   def show
-    @application = current_person.applications.find(params[:id])
+    @application = Application.find(params[:id])
   end
 
   def edit

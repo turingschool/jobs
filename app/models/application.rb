@@ -25,4 +25,9 @@ class Application < ActiveRecord::Base
   def self.closed
     where(status: "closed").order(:company)
   end
+
+  def self.active
+    self.to_apply + self.in_progress + self.applied
+  end
+  
 end

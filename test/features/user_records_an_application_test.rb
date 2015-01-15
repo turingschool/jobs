@@ -14,10 +14,12 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
       click_on 'Bookmarklet'
       fill_in 'application_company', :with => "Basecamp"
       fill_in 'application_location', :with => "Chicago, IL"
-      select 'open', :from => 'application_status'
-
+      select 'to-apply', :from => 'application_status'
+      click_on 'Save'
+      within("")
+      click_on 'to-apply'
       within('#applications') do
-        assert page.has_content? "Basecamp"
+        assert page.has_content? "http://localhost:3000/applications"
       end
     end
   end

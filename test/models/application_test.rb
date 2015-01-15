@@ -7,7 +7,6 @@ class ApplicationTest < ActiveSupport::TestCase
   end
 
   def test_it_returns_applications_with_different_statuses
-    # better naming / test sorting
     to_apply_to_application_a = create(:application)
     to_apply_to_application_b = create(:application)
     in_progress_application_a = create(:application, status: "in-progress")
