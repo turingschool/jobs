@@ -16,7 +16,11 @@ class Person < ActiveRecord::Base
   end
 
   def update_auth_attrs(auth)
-    update_attributes(provider: auth.provider, uid: auth.uid, first_name: auth.info.name, oauth_token: auth.credentials.token)
+    update_attributes(provider:    auth.provider,
+                      uid:         auth.uid,
+                      first_name:  auth.info.name,
+                      oauth_token: auth.credentials.token
+                     )
     self
   end
 
