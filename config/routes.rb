@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get "/login" => redirect("/auth/github"), as: :login
 
   get "/auth/github/callback", to: "sessions#create"
-  delete "P/logout" => "sessions#destroy", as: :logout
+  delete "/logout" => "sessions#destroy", as: :logout
 end

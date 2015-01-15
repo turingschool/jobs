@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
 
   private
 
+  helper_method :current_user
+
   def find_or_create_person
     Person.find_by(uid: current_user.uid)
   end
