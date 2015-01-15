@@ -2,8 +2,8 @@ require './test/test_helper'
 
 class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   def test_user_creates_an_application_from_an_outside_website
-    visit outside_webpage
-    click bookmarklet
+    visit('http://localhost:3000/applications')
+    click_link_or_button 'Bookmarklet'
     fill_in 'application_company', :with => "Basecamp"
     fill_in 'application_location', :with => "Chicago, IL"
     select 'open', :from => 'application_status'

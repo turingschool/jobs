@@ -1,4 +1,7 @@
 class ApplicationsController < ApplicationController
+  def index
+  end 
+
   def new
     @app = current_person.applications.new(:status => Application.statuses.first)
   end
