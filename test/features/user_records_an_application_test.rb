@@ -1,16 +1,25 @@
 require './test/test_helper'
 
 class UserRecordsAnApplication < ActionDispatch::IntegrationTest
-  def test_user_creates_an_application_from_an_outside_website
-    visit('http://localhost:3000/applications')
-    click_link_or_button 'Bookmarklet'
-    fill_in 'application_company', :with => "Basecamp"
-    fill_in 'application_location', :with => "Chicago, IL"
-    select 'open', :from => 'application_status'
-    within('#applications') do
-      assert page.has_content? "Basecamp"
-    end
 
+  def with_js_driver
+    Capybara.current_driver = :selenium
+    yield
+    Capybara.use_default_driver
+  end
+
+  def test_user_creates_an_application_from_an_outside_website
+    with_js_driver do
+      visit('http://localhost:3000/applications')
+      click_on 'Bookmarklet'
+      fill_in 'application_company', :with => "Basecamp"
+      fill_in 'application_location', :with => "Chicago, IL"
+      select 'open', :from => 'application_status'
+
+      within('#applications') do
+        assert page.has_content? "Basecamp"
+      end
+    end
   end
 
   def test_user_creates_an_application

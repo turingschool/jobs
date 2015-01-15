@@ -1,9 +1,9 @@
 class ApplicationsController < ApplicationController
   def index
-  end 
+  end
 
   def new
-    @app = current_person.applications.new(:status => Application.statuses.first)
+    @app = Application.new(:url => params[:uri])
   end
 
   def create

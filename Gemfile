@@ -29,6 +29,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'minitest-rails'
+  gem 'selenium-webdriver'
 end
 
 group :production do
