@@ -16,7 +16,7 @@ class Person < ActiveRecord::Base
       provider: auth.provider,
       uid: auth.uid,
       first_name: auth.info.name,
-      oauth_token: auth.credentials.token,
+      oauth_token: auth.credentials.token
     )
     self
   end
