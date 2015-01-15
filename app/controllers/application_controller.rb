@@ -24,11 +24,4 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
-
-  def require_invitation_or_admin
-    unless current_user && (current_user.invited? || current_user.admin?)
-      render text:   "An invitation is required to visit this site",
-             status: :forbidden
-    end
-  end
 end

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    user = Person.from_omniauth(request.env["omniauth.auth"])
+    user = Person.find_user_through_github_auth(request.env["omniauth.auth"])
     session[:user_id] = user.id
     redirect_to "/"
   end
