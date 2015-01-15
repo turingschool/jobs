@@ -1,9 +1,8 @@
 class SessionsController < ApplicationController
-
   def create
     user = Person.from_omniauth(request.env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to '/'
+    redirect_to "/"
   end
 
   def destroy
@@ -14,6 +13,6 @@ class SessionsController < ApplicationController
   protected
 
   def auth_hash
-    request.env['omniauth.auth']
+    request.env["omniauth.auth"]
   end
 end

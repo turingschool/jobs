@@ -1,5 +1,4 @@
 class PeopleController < ApplicationController
-
   def edit
     @person = current_person
   end

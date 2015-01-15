@@ -12,22 +12,17 @@ class Person < ActiveRecord::Base
   end
 
   def update_auth_attrs(auth)
-    update_attributes(
-      provider: auth.provider,
-      uid: auth.uid,
-      first_name: auth.info.name,
-      oauth_token: auth.credentials.token
-    )
+    update_attributes(provider: auth.provider, uid: auth.uid, first_name: auth.info.name, oauth_token: auth.credentials.token)
     self
   end
 
   def self.create_with_auth(auth)
-      create do |user|
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user.first_name = auth.info.name
-        user.oauth_token = auth.credentials.token
-        user.save!
-      end
+    create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.first_name = auth.info.name
+      user.oauth_token = auth.credentials.token
+      user.save!
     end
+  end
 end

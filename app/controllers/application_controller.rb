@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   private
 
   def find_or_create_person
-    Person.find_by(:uid => current_user.uid)
+    Person.find_by(uid: current_user.uid)
   end
 
   def require_login
@@ -27,9 +27,8 @@ class ApplicationController < ActionController::Base
 
   def require_invitation_or_admin
     unless current_user && (current_user.invited? || current_user.admin?)
-      render text:   'An invitation is required to visit this site',
+      render text:   "An invitation is required to visit this site",
              status: :forbidden
     end
   end
-
 end
