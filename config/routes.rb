@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   resources :people
   resources :home, only: [:index]
 
-  root :to => "dashboards#show"
+  root to: "dashboards#show"
   get "/login" => redirect("/auth/github"), as: :login
 
-  get '/auth/github/callback', to: 'sessions#create'
+  get "/auth/github/callback", to: "sessions#create"
   delete "/logout" => "sessions#destroy", as: :logout
 end
