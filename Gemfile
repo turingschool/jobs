@@ -17,7 +17,7 @@ gem 'formtastic-bootstrap'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
-gem 'deject'
+gem 'deject'                                           # dependency injection
 gem "twitter-bootstrap-rails"
 gem 'rack_session_access'
 gem 'figaro'
@@ -28,6 +28,9 @@ group :development, :test do
   gem 'capybara'
   gem 'pry'
   gem 'launchy'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'minitest-rails'
 end
 
 group :production do
