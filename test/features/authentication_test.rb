@@ -1,7 +1,8 @@
 require "./test/test_helper"
 class Authentication < ActionDispatch::IntegrationTest
   def test_person_can_log_in_from_omniauth
-    person = Person.create(provider: "github",
+    person = Person.create(
+     provider: "github",
      uid: "1",
      first_name: "goldfish",
      oauth_token: "token")
