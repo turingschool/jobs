@@ -1,6 +1,5 @@
 %tr.application{id: "application_#{application.id}"}
   %th= link_to application.company, application
-  %td= link_to application.status, application
   %td
     %ul.steps
       - application.steps.each do |step|
