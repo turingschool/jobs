@@ -27,6 +27,7 @@ class Person < ActiveRecord::Base
         user.uid = auth.uid
         user.first_name = auth.info.name
         user.oauth_token = auth.credentials.token
+        user.save!
       end
     end
 end
