@@ -9,21 +9,41 @@
     %thead
       %tr
         %th Company
-        %th Status
         %th Steps
         %th Actions
-    = render :partial => 'application', :collection => @applications
+    = render :partial => 'application', :collection => @to_apply_applications
 
   %hr
-  
-  - if @dead_applications.any?
-    %h2 Dead Applications
+
+  - if @closed_applications.any?
+    %h2 Closed Applications
 
     %table{:class => "table table-striped"}
       %thead
         %tr
           %th Company
-          %th Status
           %th Steps
           %th Actions
-      = render :partial => 'application', :collection => @dead_applications
+      = render :partial => 'application', :collection => @closed_applications
+
+  - if @in_progress_applications.any?
+    %h2 In Progress Applications
+
+    %table{:class => "table table-striped"}
+      %thead
+        %tr
+          %th Company
+          %th Steps
+          %th Actions
+      = render :partial => 'application', :collection => @in_progress_applications
+
+  - if @applied_applications.any?
+    %h2 Applied To Applications
+
+    %table{:class => "table table-striped"}
+      %thead
+        %tr
+          %th Company
+          %th Steps
+          %th Actions
+      = render :partial => 'application', :collection => @applied_applications
