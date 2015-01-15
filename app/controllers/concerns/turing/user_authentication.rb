@@ -13,7 +13,7 @@ module Turing
     end
 
     def current_user
-      @current_user ||= People.find session[:user_id]
+      @current_user ||= Person.find(session[:user_id])
     end
 
     def current_person
