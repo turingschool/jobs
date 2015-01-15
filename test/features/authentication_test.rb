@@ -1,12 +1,10 @@
-require './test/test_helper'
-
+require "./test/test_helper"
 class Authentication < ActionDispatch::IntegrationTest
-
   def test_person_can_log_in_from_omniauth
-    person = Person.create(:provider => "github",
-                           :uid => "1",
-                           :first_name => "goldfish",
-                           :oauth_token => "token")
+    person = Person.create(provider: "github",
+     uid: "1",
+     first_name: "goldfish",
+     oauth_token: "token")
     log_in(person)
     assert page.has_content? "Your Jobs Dashboard"
   end
@@ -19,6 +17,6 @@ class Authentication < ActionDispatch::IntegrationTest
       "info" => { "name" => person.first_name },
       "credentials" => { "token" => person.oauth_token }
       )
-      visit "/auth/github/callback"
+    visit "/auth/github/callback"
   end
 end
