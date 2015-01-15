@@ -1,10 +1,9 @@
 require "./test/test_helper"
 
 class ApplicationTest < ActiveSupport::TestCase
-
   def test_it_has_a_selection_of_statuses
-      assert_equal Array, Application.statuses.class
-      assert_equal String, Application.statuses.first.class
+    assert_equal Array, Application.statuses.class
+    assert_equal String, Application.statuses.first.class
   end
 
   def test_it_returns_applications_with_different_statuses
@@ -18,5 +17,4 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_equal application3, Application.applied.first
     assert_equal application4, Application.closed.first
   end
-
 end

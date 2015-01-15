@@ -1,10 +1,9 @@
-ENV['RAILS_ENV'] ||= 'test'
+ENV['RAILS_ENV'] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
-require 'capybara/rails'
-require 'minitest/emoji'
-require 'database_cleaner'
-require 'factory_girl_rails'
+require "rails/test_help"
+require "capybara/rails"
+require "minitest/emoji"
+require "database_cleaner"
 
 class ActiveSupport::TestCase
   def setup
@@ -20,8 +19,4 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
-end
-
-class MiniTest::Unit::TestCase
-
 end
