@@ -17,4 +17,3 @@ class Authentication < ActionDispatch::IntegrationTest
     visit "/auth/github/callback"
   end
 end
-
