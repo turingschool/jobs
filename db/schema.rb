@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20141210033854) do
     t.string   "location"
     t.string   "url"
     t.date     "applied_on"
-    t.string   "status" 
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "person_id"
