@@ -1,4 +1,4 @@
-require './test/test_helper'
+require "./test/test_helper"
 class Authentication < ActionDispatch::IntegrationTest
   def test_person_can_log_in_from_omniauth
     person = create(:person)
