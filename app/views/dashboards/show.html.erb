@@ -1,54 +1,67 @@
 <h1> Your Jobs Dashboard </h1>
 
 <%= link_to "Log out", logout_path, method: :delete %>
+<%= button_to "Create a New Application", new_application_path, :id => 'new_application', :class => "btn btn-default", :method => :get %>
 
-<div id="applications">
-  <h2>Active Applications</h2>
-  <%= button_to "Create a New Application", new_application_path, :id => 'new_application', :class => "btn btn-default", :method => :get %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Company</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <%= render :partial => 'application', :collection => @to_apply_applications %>
-  </table>
-  <hr/>
-  <% if @closed_applications.any? %>
-  <h2>Closed Applications</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Company</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <%= render :partial => 'application', :collection => @closed_applications %>
-  </table>
-  <% end %>
-  <% if @in_progress_applications.any? %>
-  <h2>In Progress Applications</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Company</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <%= render :partial => 'application', :collection => @in_progress_applications %>
-  </table>
-  <% end %>
-  <% if @applied_applications.any? %>
-  <h2>Applied To Applications</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Company</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <%= render :partial => 'application', :collection => @applied_applications %>
-  </table>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <h2>To Apply</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <%= render :partial => 'application', :collection => @to_apply_applications %>
+      </table>
+      <hr/>
+    </div>
+
+    <div class="col-md-3">
+      <% if @in_progress_applications.any? %>
+      <h2>In Progress</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <%= render :partial => 'application', :collection => @in_progress_applications %>
+      </table>
+      <% end %>
+    </div>
+
+    <div class="col-md-3">
+      <% if @applied_applications.any? %>
+      <h2>Applied</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <%= render :partial => 'application', :collection => @applied_applications %>
+      </table>
+      <% end %>
+    </div>
+
+    <div class="col-md-3">
+      <% if @closed_applications.any? %>
+      <h2>Closed</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <%= render :partial => 'application', :collection => @closed_applications %>
+      </table>
+      <% end %>
+    </div>
+  </div>
 </div>
