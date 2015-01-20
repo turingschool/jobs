@@ -3,14 +3,14 @@ class DashboardsController < ApplicationController
 
   def show
     unless current_person.is_a? String
-      @to_apply_applications = application_search("to_apply")
-      @closed_applications = application_search("closed")
-      @in_progress_applications = application_search("in_progress")
-      @applied_applications = application_search("applied")
+      @to_apply_applications = searcher("to_apply")
+      @closed_applications = searcher("closed")
+      @in_progress_applications = searcher("in_progress")
+      @applied_applications = searcher("applied")
     end
   end
 
-  def application_search(type)
-    current_user.applications.where(status: type)
+  def searcher(status)
+    current_user.applications.application_search(status)
   end
 end
