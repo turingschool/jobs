@@ -1,4 +1,5 @@
 class ApplicationsController < ApplicationController
+
   def new
     @app = current_person.applications.new(:status => Application.statuses.first)
   end
