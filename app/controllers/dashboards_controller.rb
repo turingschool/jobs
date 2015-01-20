@@ -1,4 +1,6 @@
 class DashboardsController < ApplicationController
+  before_filter :require_login
+
   def show
     unless current_person.kind_of? String
       @to_apply_applications = application_search(to_apply)

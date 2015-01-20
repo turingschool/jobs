@@ -1,8 +1,7 @@
-
 class Application < ActiveRecord::Base
   validates_presence_of :company
   validates_presence_of :status
-
+  belongs_to :person
   has_many :steps
 
   def self.statuses
