@@ -7,7 +7,7 @@ class Paths < ActionDispatch::IntegrationTest
   end
 
   def test_can_visit_the_dashboard_if_authenticated
-    user = Person.create(first_name: 'Aaron', last_name: 'Wortham')
+    user = Person.create(first_name: "Aaron", last_name: "Wortham")
     page.set_rack_session(user_id: user.id)
     visit dashboard_path
     expect(current_path).to eq dashboard_path
