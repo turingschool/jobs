@@ -2,7 +2,8 @@ require './test/test_helper'
 
 class UserRecordsSteps < ActionDispatch::IntegrationTest
   def test_user_adds_a_step
-    app = Application.create(:company => "Basecamp", :status => "open", :url => "Basecamp.com")
+    app = Application.create(company: "Basecamp",
+    status: "open", url: "Basecamp.com")
     visit application_path(app)
 
     within(".application") do
@@ -20,8 +21,9 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
   end
 
   def test_user_edits_a_step
-    app = Application.create(:company => "Basecamp", :status => "open", :url => "Basecamp.com")
-    step = app.steps.create(:kind => "feedback", :note => "They're hiring!")
+    app = Application.create(company: "Basecamp", status: "open",
+    url: "Basecamp.com")
+    step = app.steps.create(kind: "feedback", note: "They're hiring!")
 
     visit application_path(app)
     assert page.has_content? "They're hiring!"

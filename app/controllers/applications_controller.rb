@@ -3,7 +3,7 @@ class ApplicationsController < ApplicationController
   end
 
   def new
-    @app = Application.new(:url => params[:uri])
+    @app = Application.new(url: params[:uri])
   end
 
   def create

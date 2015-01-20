@@ -1,7 +1,6 @@
 require './test/test_helper'
 
 class UserRecordsAnApplication < ActionDispatch::IntegrationTest
-
   def with_js_driver
     Capybara.current_driver = :selenium
     yield
@@ -11,7 +10,8 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   def test_populates_new_application_form_from_query_param
     with_js_driver do
       visit new_application_path(uri: "google.com/jobs/1")
-      assert_equal "google.com/jobs/1", find_field('URL of the Job Posting*').value
+      assert_equal "google.com/jobs/1",
+      find_field("URL of the Job Posting*").value
     end
   end
 
