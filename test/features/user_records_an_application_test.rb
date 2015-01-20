@@ -8,19 +8,10 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     Capybara.use_default_driver
   end
 
-  def test_user_creates_an_application_from_an_outside_website
+  def test_populates_new_application_form_from_query_param
     with_js_driver do
-      visit('http://localhost:3000/applications')
-      click_on 'Bookmarklet'
-      fill_in 'application_company', :with => "Basecamp"
-      fill_in 'application_location', :with => "Chicago, IL"
-      select 'to-apply', :from => 'application_status'
-      click_on 'Save'
-      within("")
-      click_on 'to-apply'
-      within('#applications') do
-        assert page.has_content? "http://localhost:3000/applications"
-      end
+      visit new_application_path(uri: "google.com/jobs/1")
+      assert_equal "google.com/jobs/1", find_field('URL of the Job Posting*').value
     end
   end
 
