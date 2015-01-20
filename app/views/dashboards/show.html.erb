@@ -1,7 +1,7 @@
 <h1> Your Jobs Dashboard </h1>
 
 <%= link_to "Log out", logout_path, method: :delete %>
-<%= button_to "Create a New Application", new_application_path, :id => 'new_application', :class => "btn btn-default", :method => :get %>
+<%= button_to "Create a New Application", new_application_path, :id => "new_application", :class => "btn btn-default", :method => :get %>
 
 <div class="container">
   <div class="row">
@@ -14,7 +14,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <%= render :partial => 'application', :collection => @to_apply_applications %>
+        <%= render :partial => "application", :collection => @to_apply_applications %>
       </table>
       <hr/>
     </div>
@@ -29,7 +29,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <%= render :partial => 'application', :collection => @in_progress_applications %>
+        <%= render :partial => "application", :collection => @in_progress_applications %>
       </table>
       <% end %>
     </div>
@@ -37,14 +37,14 @@
     <div class="col-md-3">
       <% if @applied_applications.any? %>
       <h2>Applied</h2>
-      <table class='table table-striped'>
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>Company</th>
             <th>Actions</th>
           </tr>
         </thead>
-        <%= render :partial => 'application', :collection => @applied_applications %>
+        <%= render :partial => "application", :collection => @applied_applications %>
       </table>
       <% end %>
     </div>
@@ -59,7 +59,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <%= render :partial => 'application', :collection => @closed_applications %>
+        <%= render :partial => "application", :collection => @closed_applications %>
       </table>
       <% end %>
     </div>
