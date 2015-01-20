@@ -1,9 +1,9 @@
-
 class Application < ActiveRecord::Base
   validates_presence_of :company
   validates_presence_of :status
   validates_presence_of :url
 
+  belongs_to :person
   has_many :steps
 
   def self.statuses
@@ -29,5 +29,5 @@ class Application < ActiveRecord::Base
   def self.active
     self.to_apply + self.in_progress + self.applied
   end
-  
+
 end
