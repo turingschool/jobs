@@ -11,7 +11,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     with_js_driver do
       visit new_application_path(uri: "google.com/jobs/1")
       assert_equal "google.com/jobs/1",
-      find_field("URL of the Job Posting*").value
+                   find_field("URL of the Job Posting*").value
     end
   end
 

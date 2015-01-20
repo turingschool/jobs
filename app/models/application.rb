@@ -27,7 +27,6 @@ class Application < ActiveRecord::Base
   end
 
   def self.active
-    self.to_apply + self.in_progress + self.applied
+    to_apply + in_progress + applied
   end
-
 end

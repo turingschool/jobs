@@ -42,7 +42,8 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
   end
 
   def test_user_deletes_a_step
-    app = Application.create(:company => "Basecamp", :status => "open", :url => "Basecamp.com")
+    app = Application.create(:company => "Basecamp", :status => "open",
+     :url => "Basecamp.com")
     step = app.steps.create(:kind => "feedback", :note => "They're hiring!")
 
     visit application_path(app)
