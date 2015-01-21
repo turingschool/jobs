@@ -10,6 +10,7 @@ class DashboardsController < ApplicationController
     end
   end
 
+  private
   def searcher(status)
     current_user.applications.application_search(status)
   end

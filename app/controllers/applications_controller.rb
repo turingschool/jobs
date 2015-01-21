@@ -7,7 +7,7 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @app = Application.new(
+    @app = current_user.applications.new(
       :company    => params[:application][:company],
       :location   => params[:application][:location],
       :url        => params[:application][:url],

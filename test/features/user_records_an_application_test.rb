@@ -1,18 +1,10 @@
 require './test/test_helper'
 
 class UserRecordsAnApplication < ActionDispatch::IntegrationTest
-  def with_js_driver
-    Capybara.current_driver = :selenium
-    yield
-    Capybara.use_default_driver
-  end
-
   def test_populates_new_application_form_from_query_param
-    with_js_driver do
       visit new_application_path(uri: "google.com/jobs/1")
       assert_equal "google.com/jobs/1",
                    find_field("URL of the Job Posting*").value
-    end
   end
 
   def test_user_creates_an_application
@@ -25,6 +17,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     fill_in "application_url", with: "http://basecamp.com/jobs"
     fill_in "application_applied_on", with: Date.today
     select "applied", from: "application_status"
+
     click_link_or_button "Save"
 
     assert page.has_content? "Basecamp"
