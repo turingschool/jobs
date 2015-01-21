@@ -11,16 +11,16 @@ class ApplicationTest < ActiveSupport::TestCase
 
   def test_it_returns_applications_with_different_statuses
     to_apply1 = create(:application, status: "to_apply")
-    to_apply2 = create(:application, status: "to_apply", company: 'Sendgrid')
+    to_apply2 = create(:application, status: "to_apply", company: "Sendgrid")
 
     in_progress1 = create(:application, status: "in_progress")
-    in_progress2 = create(:application, status: "in_progress", company: 'Sendgrid')
+    in_progress2 = create(:application, status: "in_progress", company: "Sendgrid")
 
     applied1 = create(:application, status: "applied")
-    applied2 = create(:application, status: "applied", company: 'Sendgrid')
+    applied2 = create(:application, status: "applied", company: "Sendgrid")
 
     closed1 = create(:application, status: "closed")
-    closed2 = create(:application, status: "closed", company: 'Sendgrid')
+    closed2 = create(:application, status: "closed", company: "Sendgrid")
 
     assert_equal to_apply1, Application.application_search("to_apply").first
     assert_equal to_apply2, Application.application_search("to_apply").last

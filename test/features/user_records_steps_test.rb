@@ -51,7 +51,7 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
     user = create(:person)
     app = user.applications.create(company: "Basecamp",
                                    status: "applied",
-                                    url: "stuff")
+                                   url: "stuff")
     step = app.steps.create(kind: "feedback", note: "They're hiring!")
     page.set_rack_session(user_id: user.id)
     visit application_path(app)
