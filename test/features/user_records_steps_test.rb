@@ -4,7 +4,9 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
   def test_user_adds_a_step
     user = create(:person)
     page.set_rack_session(user_id: user.id)
-    app = user.applications.create(company: "Basecamp", status: "applied")
+    app = user.applications.create(company: "Basecamp",
+                                   status: "applied",
+                                   url: "stuff")
     visit application_path(app)
 
     within(".application") do
@@ -23,7 +25,7 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
 
   def test_user_edits_a_step
     user = create(:person)
-    app = user.applications.create(company: "Basecamp", status: "applied")
+    app = user.applications.create(company: "Basecamp", status: "applied", url: "stuff")
     step = app.steps.create(kind: "feedback", note: "They're hiring!")
     page.set_rack_session(user_id: user.id)
 
@@ -45,7 +47,7 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
 
   def test_user_deletes_a_step
     user = create(:person)
-    app = user.applications.create(company: "Basecamp", status: "applied")
+    app = user.applications.create(company: "Basecamp", status: "applied", url: "stuff")
     step = app.steps.create(kind: "feedback", note: "They're hiring!")
     page.set_rack_session(user_id: user.id)
     visit application_path(app)
