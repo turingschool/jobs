@@ -92,14 +92,14 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
 
     visit dashboard_path
     click_link_or_button "new_application"
-    fill_in "application_company", with: "Basecamp"
-    fill_in "application_url", with: "http://basecamp.com/jobs"
+    fill_in_all_but_url
     fill_in "Contact Information", with: "DHH - DHH@basecamp.com"
-    select "applied", from: "application_status"
-    click_link_or_button "Save"
-    click_link_or_button "Basecamp"
+    select_a_status
+    save_application
+    click_link_or_button "Test Company: no URL"
 
     assert page.has_content? "DHH - DHH@basecamp.com"
+  end
 
   def navigate_to_application_form
     user = create(:person)
