@@ -49,7 +49,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     user = create(:person)
     app = user.applications.create!(company: "Basecamp",
                                     url: "http://basecamp.com",
-                                    :location => "Chicago, IL",
+                                    location: "Chicago, IL",
                                     status: "applied")
 
     page.set_rack_session(user_id: user.id)

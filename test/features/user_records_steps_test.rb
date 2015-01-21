@@ -4,15 +4,15 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
   def test_user_adds_a_step
     user = create(:person)
     page.set_rack_session(user_id: user.id)
-    app = user.applications.create(:company => "Basecamp", :status => "applied")
+    app = user.applications.create(company: "Basecamp", status: "applied")
     visit application_path(app)
 
     within(".application") do
       click_link_or_button 'add_step'
     end
 
-    select('feedback', :from => 'step_kind')
-    fill_in 'step_note', :with => "They're not hiring. Bummer!"
+    select('feedback', from: 'step_kind')
+    fill_in 'step_note', with: "They're not hiring. Bummer!"
     click_link_or_button 'Save'
 
     within(".application") do
@@ -23,8 +23,8 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
 
   def test_user_edits_a_step
     user = create(:person)
-    app = user.applications.create(:company => "Basecamp", :status => "applied")
-    step = app.steps.create(:kind => "feedback", :note => "They're hiring!")
+    app = user.applications.create(company: "Basecamp", status: "applied")
+    step = app.steps.create(kind: "feedback", note: "They're hiring!")
     page.set_rack_session(user_id: user.id)
 
     visit application_path(app)
@@ -32,8 +32,8 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
     assert page.has_content? "Feedback"
 
     click_link_or_button "edit_step_#{step.id}"
-    select('code_challenge', :from => 'step_kind')
-    fill_in 'step_note', :with => "They're NOT hiring!"
+    select('code_challenge', from: 'step_kind')
+    fill_in 'step_note', with: "They're NOT hiring!"
     click_link_or_button "Save"
 
     refute page.has_content? "They're hiring!"
@@ -45,8 +45,8 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
 
   def test_user_deletes_a_step
     user = create(:person)
-    app = user.applications.create(:company => "Basecamp", :status => "applied")
-    step = app.steps.create(:kind => "feedback", :note => "They're hiring!")
+    app = user.applications.create(company: "Basecamp", status: "applied")
+    step = app.steps.create(kind: "feedback", note: "They're hiring!")
     page.set_rack_session(user_id: user.id)
     visit application_path(app)
 
