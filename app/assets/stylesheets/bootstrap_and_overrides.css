@@ -9,3 +9,8 @@
 .theme-showcase{
   padding-top: 5em;
 }
+
+
+.navbar p {
+  color: white;
+}

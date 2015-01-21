@@ -24,6 +24,7 @@ gem "omniauth"
 gem "omniauth-github"
 
 group :development, :test do
+  gem 'selenium-webdriver'
   gem "minitest"
   gem "minitest-emoji"
   gem "capybara"
