@@ -2,21 +2,23 @@ require './test/test_helper'
 
 class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   def test_user_creates_an_application
+    user = create(:person)
+    page.set_rack_session(user_id: user.id)
     visit dashboard_path
     click_link_or_button 'new_application'
     fill_in 'application_company', :with => "Basecamp"
     fill_in 'application_location', :with => "Chicago, IL"
     fill_in 'application_url', :with => "http://basecamp.com/jobs"
     fill_in 'application_applied_on', :with => Date.today
-    select 'open', :from => 'application_status'
+    select 'applied', :from => 'application_status'
     click_link_or_button 'Save'
 
-    within('#applications') do
-      assert page.has_content? "Basecamp"
-    end
+    assert page.has_content? "Basecamp"
   end
 
   def test_an_application_with_no_company_is_rejected
+    user = create(:person)
+    page.set_rack_session(user_id: user.id)
     visit dashboard_path
     click_link_or_button 'new_application'
     fill_in 'application_company', :with => ""
@@ -29,10 +31,12 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   end
 
   def test_viewing_the_details_of_an_application
-    app = Application.create!(:company => "Basecamp",
+    user = create(:person)
+    app = user.applications.create!(:company => "Basecamp",
                               :url => "http://basecamp.com",
-                              :status => "open")
+                              :status => "applied")
 
+    page.set_rack_session(user_id: user.id)
     visit dashboard_path
     within("#application_#{app.id}") do
       click_link_or_button app.company
@@ -42,18 +46,20 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   end
 
   def test_editing_the_details_of_an_application
-    app = Application.create!(:company => "Basecamp",
+    user = create(:person)
+    app = user.applications.create!(:company => "Basecamp",
                               :url => "http://basecamp.com",
                               :location => "Chicago, IL",
-                              :status => "open")
+                              :status => "applied")
 
+    page.set_rack_session(user_id: user.id)
     visit application_path(app)
     click_link_or_button("edit_application_#{app.id}")
 
     fill_in 'application_company', :with => "Trello"
     fill_in 'application_location', :with => "New York, NY"
     fill_in 'application_url', :with => "http://gettrello.com"
-    select "dead", :from => 'application_status'
+    select "closed", :from => 'application_status'
     click_link_or_button 'Save'
 
     refute page.has_content? "Basecamp"
@@ -66,6 +72,6 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     assert page.has_content? "http://gettrello.com"
 
     refute page.has_content? "open"
-    assert page.has_content? "dead"
+    assert page.has_content? "closed"
   end
 end

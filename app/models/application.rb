@@ -4,6 +4,10 @@ class Application < ActiveRecord::Base
   belongs_to :person
   has_many :steps
 
+  def self.statuses
+    %w(to_apply in_progress applied closed)
+  end
+
   def self.application_search(type)
     where(status: type).order(:company)
   end

@@ -2,7 +2,9 @@ require './test/test_helper'
 
 class UserRecordsSteps < ActionDispatch::IntegrationTest
   def test_user_adds_a_step
-    app = Application.create(:company => "Basecamp", :status => "open")
+    user = create(:person)
+    page.set_rack_session(user_id: user.id)
+    app = user.applications.create(:company => "Basecamp", :status => "applied")
     visit application_path(app)
 
     within(".application") do
@@ -20,8 +22,10 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
   end
 
   def test_user_edits_a_step
-    app = Application.create(:company => "Basecamp", :status => "open")
+    user = create(:person)
+    app = user.applications.create(:company => "Basecamp", :status => "applied")
     step = app.steps.create(:kind => "feedback", :note => "They're hiring!")
+    page.set_rack_session(user_id: user.id)
 
     visit application_path(app)
     assert page.has_content? "They're hiring!"
@@ -40,9 +44,10 @@ class UserRecordsSteps < ActionDispatch::IntegrationTest
   end
 
   def test_user_deletes_a_step
-    app = Application.create(:company => "Basecamp", :status => "open")
+    user = create(:person)
+    app = user.applications.create(:company => "Basecamp", :status => "applied")
     step = app.steps.create(:kind => "feedback", :note => "They're hiring!")
-
+    page.set_rack_session(user_id: user.id)
     visit application_path(app)
 
     click_link_or_button "delete_step_#{step.id}"
