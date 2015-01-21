@@ -1,4 +1,6 @@
 class PeopleController < ApplicationController
+  before_filter :require_login
+  
   def edit
     @person = current_person
   end

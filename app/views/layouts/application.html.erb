@@ -26,6 +26,11 @@
             <li><a href="javascript:location.href='http://localhost:3000/applications/new?uri='
             +encodeURIComponent(location.href);">
             Create Application Bookmarklet</a> <p> Drag to Your Favorites To Add Applications From External Websites </p></li>
+            <% if logged_in? %>
+              <li><%= link_to "Log out", logout_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Log in with GitHub", login_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>
