@@ -1,61 +1,50 @@
 require './test/test_helper'
 
 class UserRecordsAnApplication < ActionDispatch::IntegrationTest
-  def test_populates_new_application_form_from_query_param
-      visit new_application_path(uri: "google.com/jobs/1")
-      assert_equal "google.com/jobs/1",
-                   find_field("URL of the Job Posting").value
+  def test_user_can_populate_new_application_form_from_query_param
+    visit new_application_path(uri: "google.com/jobs/1")
+
+    assert_equal "google.com/jobs/1", find_field("URL of the Job Posting").value
   end
 
-  def test_user_creates_an_application
-    user = create(:person)
-    page.set_rack_session(user_id: user.id)
-    visit dashboard_path
-    click_link_or_button "new_application"
-    fill_in "application_company", with: "Basecamp"
-    fill_in "application_location", with: "Chicago, IL"
-    fill_in "application_url", with: "http://basecamp.com/jobs"
-    fill_in "application_applied_on", with: Date.today
-    select "applied", from: "application_status"
+  def test_user_can_create_a_complete_application
+    navigate_to_application_form
 
-    click_link_or_button "Save"
+    fill_in_all_application_form_fields
+    select_a_status
+    save_application
 
-    assert page.has_content? "Basecamp"
+    assert page.has_content? "Test Company: all fields"
+    assert current_path, dashboard_path
   end
 
-  def test_an_application_with_no_company_is_rejected
-    user = create(:person)
-    page.set_rack_session(user_id: user.id)
-    visit dashboard_path
-    click_link_or_button "new_application"
-    fill_in "application_company", with: ""
-    fill_in "application_location", with: "Chicago, IL"
-    fill_in "application_url", with: "http://basecamp.com/jobs"
-    fill_in "application_applied_on", with: Date.today
-    click_link_or_button "Save"
+  def test_user_cannot_create_an_application_with_no_company
+    navigate_to_application_form
 
-    assert page.has_field? "application_company"
+    fill_in_all_but_company_name
+    select_a_status
+    save_application
+
+    assert page.has_content? "can't be blank"
+    assert current_path, new_application_path
   end
 
-  def test_an_application_with_no_url_is_accepted
-    user = create(:person)
-    page.set_rack_session(user_id: user.id)
-    visit dashboard_path
-    click_link_or_button "new_application"
-    fill_in "application_company", with: "Google"
-    fill_in "application_location", with: "San Francisco, CA"
-    fill_in "application_applied_on", with: Date.today
-    select "in_progress", from: "application_status"
+  def test_user_can_create_an_application_with_no_url
+    navigate_to_application_form
 
-    click_link_or_button "Save"
+    fill_in_all_but_url
+    select_a_status
+    save_application
 
-    assert page.has_content? "Google"
+    assert page.has_content? "Test Company: no URL"
+    assert current_path, dashboard_path
   end
 
-  def test_viewing_the_details_of_an_application
+  def test_user_can_view_the_details_of_an_application
     user = create(:person)
     app = user.applications.create!(company: "Basecamp",
                                     url: "http://basecamp.com",
+                                    location: "Chicago, IL",
                                     status: "applied")
 
     page.set_rack_session(user_id: user.id)
@@ -96,4 +85,39 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     refute page.has_content? "open"
     assert page.has_content? "closed"
   end
+
+  def navigate_to_application_form
+    user = create(:person)
+    page.set_rack_session(user_id: user.id)
+    visit dashboard_path
+    click_link_or_button "new_application"
+  end
+
+  def fill_in_all_application_form_fields
+    fill_in "application_company", with: "Test Company: all fields"
+    fill_in "application_location", with: "Chicago, IL"
+    fill_in "application_url", with: "http://basecamp.com/jobs"
+    fill_in "application_applied_on", with: Date.today
+  end
+
+  def fill_in_all_but_company_name
+    fill_in "application_location", with: "Chicago, IL"
+    fill_in "application_url", with: "http://basecamp.com/jobs"
+    fill_in "application_applied_on", with: Date.today
+  end
+
+  def fill_in_all_but_url
+    fill_in "application_company", with: "Test Company: no URL"
+    fill_in "application_location", with: "Chicago, IL"
+    fill_in "application_applied_on", with: Date.today
+  end
+
+  def select_a_status
+    select "applied", from: "application_status"
+  end
+
+  def save_application
+    click_link_or_button "Save"
+  end
+
 end
