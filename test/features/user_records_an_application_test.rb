@@ -86,6 +86,21 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     assert page.has_content? "closed"
   end
 
+  def test_user_can_add_contact_info_to_an_application
+    user = create(:person)
+    page.set_rack_session(user_id: user.id)
+
+    visit dashboard_path
+    click_link_or_button "new_application"
+    fill_in_all_but_url
+    fill_in "Contact Information", with: "DHH - DHH@basecamp.com"
+    select_a_status
+    save_application
+    click_link_or_button "Test Company: no URL"
+
+    assert page.has_content? "DHH - DHH@basecamp.com"
+  end
+
   def navigate_to_application_form
     user = create(:person)
     page.set_rack_session(user_id: user.id)
