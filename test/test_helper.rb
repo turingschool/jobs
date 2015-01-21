@@ -8,7 +8,6 @@ require "database_cleaner"
 DatabaseCleaner.strategy = :truncation
 
 class ActiveSupport::TestCase
-
   def setup
     DatabaseCleaner.start
   end
@@ -18,7 +17,6 @@ class ActiveSupport::TestCase
   end
 
   include FactoryGirl::Syntax::Methods
-
 end
 
 class ActionDispatch::IntegrationTest

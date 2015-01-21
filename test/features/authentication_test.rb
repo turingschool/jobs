@@ -19,8 +19,7 @@ class Authentication < ActionDispatch::IntegrationTest
       "provider" => "github",
       "uid" => person.uid,
       "info" => { "name" => person.first_name },
-      "credentials" => { "token" => person.oauth_token }
-      )
+      "credentials" => { "token" => person.oauth_token })
     visit "/auth/github/callback"
   end
 
@@ -29,7 +28,7 @@ class Authentication < ActionDispatch::IntegrationTest
     visit "/"
 
     assert page.has_content? "Log in with GitHub"
-    
+
     page.set_rack_session(user_id: person.id)
     visit "/"
 
