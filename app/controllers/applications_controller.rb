@@ -8,12 +8,12 @@ class ApplicationsController < ApplicationController
 
   def create
     @app = current_user.applications.new(
-      :company      => params[:application][:company],
-      :location     => params[:application][:location],
-      :url          => params[:application][:url],
-      :applied_on   => params[:application][:applied_on],
-      :status       => params[:application][:status],
-      :contact_info => params[:application][:contact_info]
+      company:      params[:application][:company],
+      location:     params[:application][:location],
+      url:          params[:application][:url],
+      applied_on:   params[:application][:applied_on],
+      status:       params[:application][:status],
+      contact_info: params[:application][:contact_info]
     )
 
     if @app.save
