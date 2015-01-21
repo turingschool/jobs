@@ -2,9 +2,12 @@ require './test/test_helper'
 
 class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   def test_populates_new_application_form_from_query_param
-      visit new_application_path(uri: "google.com/jobs/1")
-      assert_equal "google.com/jobs/1",
-                   find_field("URL of the Job Posting*").value
+    user = create(:person)
+    page.set_rack_session(user_id: user.id)
+    visit new_application_path(uri: "google.com/jobs/1")
+
+    assert_equal "google.com/jobs/1",
+                 find_field("URL of the Job Posting*").value
   end
 
   def test_user_creates_an_application

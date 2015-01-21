@@ -29,6 +29,7 @@ class Authentication < ActionDispatch::IntegrationTest
     visit "/"
 
     assert page.has_content? "Log in with GitHub"
+    
     page.set_rack_session(user_id: person.id)
     visit "/"
 
