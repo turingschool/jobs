@@ -4,7 +4,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   def test_populates_new_application_form_from_query_param
       visit new_application_path(uri: "google.com/jobs/1")
       assert_equal "google.com/jobs/1",
-                   find_field("URL of the Job Posting*").value
+                   find_field("URL of the Job Posting").value
   end
 
   def test_user_creates_an_application
@@ -35,6 +35,21 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     click_link_or_button "Save"
 
     assert page.has_field? "application_company"
+  end
+
+  def test_an_application_with_no_url_is_accepted
+    user = create(:person)
+    page.set_rack_session(user_id: user.id)
+    visit dashboard_path
+    click_link_or_button "new_application"
+    fill_in "application_company", with: "Google"
+    fill_in "application_location", with: "San Francisco, CA"
+    fill_in "application_applied_on", with: Date.today
+    select "in_progress", from: "application_status"
+
+    click_link_or_button "Save"
+
+    assert page.has_content? "Google"
   end
 
   def test_viewing_the_details_of_an_application

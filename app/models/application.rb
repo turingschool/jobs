@@ -1,6 +1,5 @@
 class Application < ActiveRecord::Base
   validates_presence_of :company
-  validates_presence_of :url
   validates :status, inclusion: { in: %w(to_apply in_progress applied closed) }
   belongs_to :person
   has_many :steps
