@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :application do
-    status "to-apply"
+    status "to_apply"
     company "Google"
   end
 

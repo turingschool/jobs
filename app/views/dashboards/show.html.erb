@@ -6,62 +6,67 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-    <h2>To Apply</h2>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <%= render :partial => "application", :collection => @to_apply_applications %>
-      </table>
-      <hr/>
+      <div class="to_apply">
+        <h2>To Apply</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <%= render :partial => "application", :collection => @to_apply_applications %>
+          </table>
+          <hr/>
+      </div>
     </div>
-
     <div class="col-md-3">
-      <% if @in_progress_applications.any? %>
-      <h2>In Progress</h2>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <%= render :partial => "application", :collection => @in_progress_applications %>
-      </table>
-      <% end %>
+      <div class="in_progress">
+        <% if @in_progress_applications.any? %>
+        <h2>In Progress</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <%= render :partial => "application", :collection => @in_progress_applications %>
+        </table>
+        <% end %>
+      </div>
     </div>
-
     <div class="col-md-3">
-      <% if @applied_applications.any? %>
-      <h2>Applied</h2>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <%= render :partial => "application", :collection => @applied_applications %>
-      </table>
-      <% end %>
+      <div class="applied">
+        <% if @applied_applications.any? %>
+        <h2>Applied</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <%= render :partial => "application", :collection => @applied_applications %>
+        </table>
+        <% end %>
+      </div>
     </div>
-
     <div class="col-md-3">
-      <% if @closed_applications.any? %>
-      <h2>Closed</h2>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <%= render :partial => "application", :collection => @closed_applications %>
-      </table>
-      <% end %>
+      <div class="closed">
+        <% if @closed_applications.any? %>
+        <h2>Closed</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <%= render :partial => "application", :collection => @closed_applications %>
+        </table>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
