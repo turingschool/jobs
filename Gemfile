@@ -19,6 +19,7 @@ gem "fog"
 gem "mini_magick"
 gem "deject"                                           # dependency injection
 gem "twitter-bootstrap-rails"
+gem 'rack_session_access'
 gem "figaro"
 gem "omniauth"
 gem "omniauth-github"

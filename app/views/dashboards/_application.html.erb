@@ -1,0 +1,10 @@
+<tr class="application" id="application_<%= application.id %>">
+  <th>
+    <%= link_to application.company, application %>
+  </th>
+  
+  <td>
+    <%= link_to 'edit', edit_application_path(application) %>
+    <%= link_to 'remove', application_path(application), :method => :delete %>
+  </td>
+</tr>

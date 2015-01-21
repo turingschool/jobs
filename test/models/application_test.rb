@@ -1,24 +1,23 @@
 require "./test/test_helper"
 
 class ApplicationTest < ActiveSupport::TestCase
-  def test_it_has_a_selection_of_statuses
-    assert_equal Array, Application.statuses.class
-    assert_equal String, Application.statuses.first.class
+  def test_it_doesnt_allow_status_other_than_the_4
+    application1 = Application.new(status: "to-apply")
+    application2 = Application.new(status: "mine_in_progress")
+
+    assert_equal false, application1.valid?
+    assert_equal false, application2.valid?
   end
 
   def test_it_returns_applications_with_different_statuses
-    to_apply_to_application_a = create(:application)
-    to_apply_to_application_b = create(:application)
-    in_progress_application_a = create(:application, status: "in-progress")
-    in_progress_application_b = create(:application, status: "in-progress")
-    applied_application_a = create(:application, status: "applied")
-    applied_application_b = create(:application, status: "applied")
-    closed_application_a = create(:application, status: "closed")
-    closed_application_b = create(:application, status: "closed")
+    application1 = create(:application, status: "to_apply")
+    application2 = create(:application, status: "in_progress")
+    application3 = create(:application, status: "applied")
+    application4 = create(:application, status: "closed")
 
-    assert_equal to_apply_to_application_a, Application.to_apply.first
-    assert_equal in_progress_application_a, Application.in_progress.first
-    assert_equal applied_application_a, Application.applied.first
-    assert_equal closed_application_a, Application.closed.first
+    assert_equal application1, Application.application_search("to_apply").first
+    assert_equal application2, Application.application_search("in_progress").first
+    assert_equal application3, Application.application_search("applied").first
+    assert_equal application4, Application.application_search("closed").first
   end
 end
