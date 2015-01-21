@@ -81,4 +81,20 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     refute page.has_content? "open"
     assert page.has_content? "closed"
   end
+
+  def test_user_can_add_contact_info_to_an_application
+    user = create(:person)
+    page.set_rack_session(user_id: user.id)
+    visit dashboard_path
+    click_link_or_button "new_application"
+    fill_in "application_company", with: "Basecamp"
+    fill_in "application_url", with: "http://basecamp.com/jobs"
+    fill_in "contact_information", with: "DHH - DHH@basecamp.com"
+    select "applied", from: "application_status"
+
+    click_link_or_button "Save"
+
+    assert page.has_content? "DHH - DHH@basecamp.com"
+  end
+
 end

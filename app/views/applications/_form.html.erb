@@ -1,0 +1,10 @@
+<%= semantic_form_for @app do |f| %>
+  <%= f.inputs :name => "Basic" do %>
+    <%= f.input :company %>
+    <%= f.input :location %>
+    <%= f.input :url, :label => "URL of the Job Posting" %>
+    <%= f.input :applied_on, :as => :string, :input_html => { :value => Date.today } %>
+    <%= f.input :status, :as => :select, :collection => Application.statuses %>
+  <% end %>
+  <%= f.submit "Save" %>
+<% end %>
