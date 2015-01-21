@@ -1,29 +1,16 @@
 class Application < ActiveRecord::Base
   validates_presence_of :company
-  validates_presence_of :status
   validates_presence_of :url
-
+  validates :status, inclusion: { in: %w(to_apply in_progress applied closed) }
   belongs_to :person
   has_many :steps
 
   def self.statuses
-    %w(to-apply in-progress applied closed )
+    %w(to_apply in_progress applied closed)
   end
 
-  def self.to_apply
-    where(status: "to-apply").order(:company)
-  end
-
-  def self.in_progress
-    where(status: "in-progress").order(:company)
-  end
-
-  def self.applied
-    where(status: "applied").order(:company)
-  end
-
-  def self.closed
-    where(status: "closed").order(:company)
+  def self.application_search(type)
+    where(status: type).order(:company)
   end
 
   def self.active

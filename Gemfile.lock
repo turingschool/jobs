@@ -59,7 +59,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     daemons (1.1.9)
-    database_cleaner (1.3.0)
+    database_cleaner (1.4.0)
     debug_inspector (0.0.2)
     deject (0.2.3)
     erubis (2.7.0)
@@ -129,14 +129,14 @@ GEM
       fog-core (>= 1.21.0)
       fog-json
       fog-xml (>= 0.0.1)
-    fog-sakuracloud (0.1.1)
+    fog-sakuracloud (1.0.0)
       fog-core
       fog-json
     fog-serverlove (0.1.1)
       fog-core
       fog-json
-    fog-softlayer (0.3.28)
-      fog-core (>= 1.27.3)
+    fog-softlayer (0.3.30)
+      fog-core
       fog-json
     fog-storm_on_demand (0.1.0)
       fog-core
@@ -216,6 +216,9 @@ GEM
     rack (1.5.2)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack_session_access (0.1.1)
+      builder (>= 2.0.0)
+      rack (>= 1.0.0)
     rails (4.1.8)
       actionmailer (= 4.1.8)
       actionpack (= 4.1.8)
@@ -312,6 +315,7 @@ DEPENDENCIES
   omniauth-github
   pg
   pry
+  rack_session_access
   rails (= 4.1.8)
   rails_12factor
   redcarpet
