@@ -1,6 +1,8 @@
 class Application < ActiveRecord::Base
   validates_presence_of :company
   validates_presence_of :status
+  validates_presence_of :url
+
   belongs_to :person
   has_many :steps
 
@@ -22,5 +24,9 @@ class Application < ActiveRecord::Base
 
   def self.closed
     where(status: "closed").order(:company)
+  end
+
+  def self.active
+    to_apply + in_progress + applied
   end
 end
