@@ -71,7 +71,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     fill_in "application_location", with: "New York, NY"
     fill_in "application_url", with: "http://gettrello.com"
     select "closed", from: "application_status"
-    click_link_or_button "Save"
+    save_application
 
     refute page.has_content? "Basecamp"
     assert page.has_content? "Trello"
