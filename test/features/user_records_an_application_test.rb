@@ -119,5 +119,4 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   def save_application
     click_link_or_button "Save"
   end
-
 end
