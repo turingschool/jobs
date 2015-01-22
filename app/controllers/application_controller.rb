@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   after_filter :log_session
 
   def log_session
-    Rails.logger.info("Cookies: #{cookies.inspect}")
     Rails.logger.info("Session: #{session.keys}, #{session.values}")
   end
 
