@@ -13,7 +13,8 @@ class ApplicationsController < ApplicationController
       url:          params[:application][:url],
       applied_on:   params[:application][:applied_on],
       status:       params[:application][:status],
-      contact_info: params[:application][:contact_info]
+      contact_info: params[:application][:contact_info],
+      tier:         params[:application][:tier]
     )
 
     if @app.save

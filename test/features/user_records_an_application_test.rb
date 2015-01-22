@@ -101,6 +101,19 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     assert page.has_content? "DHH - DHH@basecamp.com"
   end
 
+  def test_user_can_add_a_tier_to_an_application
+    navigate_to_application_form
+    fill_in_all_but_url
+    select_a_status
+    select "reach", from: "application_tier"
+    save_application
+    click_link_or_button "Test Company: no URL"
+
+    assert page.has_content? "reach"
+
+  end
+
+  private
   def navigate_to_application_form
     user = create(:person)
     page.set_rack_session(user_id: user.id)
