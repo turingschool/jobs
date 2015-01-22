@@ -18,9 +18,9 @@ class UserInteractsWithAnApplication < ActionDispatch::IntegrationTest
   end
 
   def test_editing_the_details_of_an_application
-    person = create(:person)
-    app = person.applications.create!(company: "Basecamp",
-    status: "applied"   )
+    app = create(:application, company: "Basecamp",
+                               status: "applied")
+    person = app.person
 
     page.set_rack_session(user_id: person.id)
     visit application_path(app)
