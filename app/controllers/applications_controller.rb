@@ -1,9 +1,6 @@
 class ApplicationsController < ApplicationController
   before_filter :require_login
 
-  def index
-  end
-
   def new
     @app = Application.new(url: params[:uri])
   end
