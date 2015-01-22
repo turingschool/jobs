@@ -114,7 +114,6 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     fill_in "application_location", with: "Chicago, IL"
     fill_in "application_url", with: "http://basecamp.com/jobs"
     fill_in "application_applied_on", with: Date.today
-    # fill_in "application_notes", with: "applied via email with resume"
   end
 
   def fill_in_all_but_company_name
