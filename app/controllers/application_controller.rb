@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= Person.find(session[:user_id])
+    @current_user ||= Person.find(session[:user_id]) if session[:user_id]
   end
 
   def current_person
@@ -23,8 +23,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    unless session[:user_id]
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_user
   end
 end
