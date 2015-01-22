@@ -60,33 +60,19 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   end
 
   def test_editing_the_details_of_an_application
-    user = create(:person)
-    app = user.applications.create!(company: "Basecamp",
-                                    url: "http://basecamp.com",
-                                    location: "Chicago, IL",
-                                    status: "applied")
+    person = create(:person)
+    app = person.applications.create!(company: "Basecamp",
+                                       status: "applied"   )
 
-    page.set_rack_session(user_id: user.id)
+    page.set_rack_session(user_id: person.id)
     visit application_path(app)
     click_link_or_button("edit_application_#{app.id}")
 
     fill_in "application_company", with: "Trello"
-    fill_in "application_location", with: "New York, NY"
-    fill_in "application_url", with: "http://gettrello.com"
-    select "closed", from: "application_status"
     save_application
 
     refute page.has_content? "Basecamp"
     assert page.has_content? "Trello"
-
-    refute page.has_content? "Chicago, IL"
-    assert page.has_content? "New York, NY"
-
-    refute page.has_content? "http://basecamp.com"
-    assert page.has_content? "http://gettrello.com"
-
-    refute page.has_content? "open"
-    assert page.has_content? "closed"
   end
 
   def test_user_can_add_contact_info_to_an_application
