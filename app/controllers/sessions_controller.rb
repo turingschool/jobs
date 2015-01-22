@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def create
     person = Person.find_or_create_user_from(request.env["omniauth.auth"])
+    Rails.logger.info("Created or found person: #{person.inspect}")
     session[:user_id] = person.id
     redirect_to dashboard_path
   end
