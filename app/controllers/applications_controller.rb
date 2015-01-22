@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
   before_filter :require_login
-  
+
   def index
   end
 
@@ -16,7 +16,8 @@ class ApplicationsController < ApplicationController
       applied_on:   params[:application][:applied_on],
       status:       params[:application][:status],
       contact_info: params[:application][:contact_info],
-      tier:         params[:application][:tier]
+      tier:         params[:application][:tier],
+      priority:     params[:application][:priority]
     )
 
     if @app.save
