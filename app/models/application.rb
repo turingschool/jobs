@@ -4,10 +4,9 @@ class Application < ActiveRecord::Base
 
   belongs_to :person
   has_many :steps
-
   def self.priorities
     %w(high medium low)
-  end 
+  end
 
   def self.statuses
     %w(to_apply in_progress applied closed)
