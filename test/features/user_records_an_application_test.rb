@@ -123,7 +123,6 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
 
     save_and_open_page
     assert page.has_content? "high"
-  end
 
   private
 

@@ -17,7 +17,7 @@ class ApplicationsController < ApplicationController
       status:       params[:application][:status],
       contact_info: params[:application][:contact_info],
       tier:         params[:application][:tier],
-      priority:       params[:application][:priority]
+      priority:     params[:application][:priority]
     )
 
     if @app.save
