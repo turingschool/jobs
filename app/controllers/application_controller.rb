@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :current_user
 
-  before_filter :log_session
+  after_filter :log_session
 
   def log_session
-    Rails.logger.info("Cookies: #{cookies}")
-    Rails.logger.info("Session: #{session}")
+    Rails.logger.info("Cookies: #{cookies.inspect}")
+    Rails.logger.info("Session: #{session.keys}, #{session.values}")
   end
 
   def logged_in?
