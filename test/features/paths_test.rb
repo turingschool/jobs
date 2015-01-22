@@ -1,8 +1,13 @@
 require "./test/test_helper"
 
 class Paths < ActionDispatch::IntegrationTest
+  # def setup
+  #   log_out
+  # end
+
   def test_can_visit_the_root_path_without_authentication
     visit "/"
+
     assert page.has_content? "Log in with GitHub"
   end
 
