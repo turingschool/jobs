@@ -113,6 +113,19 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     assert page.has_content? "reach"
   end
 
+  def test_user_can_add_a_priority_level_to_an_application
+    navigate_to_application_form
+    fill_in_all_but_url
+    select_a_status
+    select "high", from: "Priority"
+    save_application
+    click_link_or_button "Test Company: no URL"
+
+    save_and_open_page
+    assert page.has_content? "high"
+
+  end
+
   private
 
   def navigate_to_application_form
