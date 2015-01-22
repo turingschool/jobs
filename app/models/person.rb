@@ -14,7 +14,8 @@ class Person < ActiveRecord::Base
     person.uid          = auth.uid
     person.first_name   = auth.info.name
     person.oauth_token  = auth.credentials.token
-    person.save
+    Rails.logger.info("making or updating a person; valid? #{person.valid?}, errors: #{person.errors}")
+    person.save!
 
     person
   end
