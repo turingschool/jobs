@@ -123,6 +123,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
 
     assert page.has_content? "high"
   end
+  
   private
 
   def navigate_to_application_form
