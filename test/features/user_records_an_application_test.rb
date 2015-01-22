@@ -111,10 +111,10 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     click_link_or_button "Test Company: no URL"
 
     assert page.has_content? "reach"
-
   end
 
   private
+
   def navigate_to_application_form
     user = create(:person)
     page.set_rack_session(user_id: user.id)
