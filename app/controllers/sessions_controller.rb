@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    user = Person.find_user_through_github_auth(request.env["omniauth.auth"])
+    user = Person.find_or_create_user_from(request.env["omniauth.auth"])
     session[:user_id] = user.id
     redirect_to dashboard_path
   end
