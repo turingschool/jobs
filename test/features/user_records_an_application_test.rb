@@ -121,9 +121,9 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     save_application
     click_link_or_button "Test Company: no URL"
 
-    save_and_open_page
     assert page.has_content? "high"
-
+  end
+  
   private
 
   def navigate_to_application_form
