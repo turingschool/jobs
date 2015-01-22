@@ -1,5 +1,6 @@
 FactoryGirl.define do
-  sequence(:user_id) do |n| "#{n}"
+  sequence(:user_id) do |n|
+   "#{n}"
   end
 
   factory :application do
@@ -16,5 +17,4 @@ FactoryGirl.define do
     oauth_token "token"
     user_id
   end
-
 end

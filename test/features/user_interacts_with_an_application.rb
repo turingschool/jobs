@@ -1,12 +1,12 @@
-require './test/test_helper'
+require "./test/test_helper"
 
 class UserInteractsWithAnApplication < ActionDispatch::IntegrationTest
   def test_user_can_view_the_details_of_an_application
     person = create(:person)
     app = person.applications.create!(company: "Basecamp",
-    url: "http://basecamp.com",
-    location: "Chicago, IL",
-    status: "applied")
+                                          url: "http://basecamp.com",
+                                     location: "Chicago, IL",
+                                       status: "applied")
 
     page.set_rack_session(user_id: person.id)
     visit dashboard_path
