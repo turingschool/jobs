@@ -2,10 +2,12 @@ require './test/test_helper'
 
 class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   def test_user_can_populate_new_application_form_from_query_param
-    navigate_to_application_form
-    visit new_application_path(uri: "google.com/jobs/1")
+    query_parameter = "google.com/jobs/1"
 
-    assert_equal "google.com/jobs/1", find_field("URL of the Job Posting").value
+    navigate_to_application_form
+    visit new_application_path(uri: query_parameter)
+
+    assert_equal query_parameter, find_field("URL of the Job Posting").value
   end
 
   def test_user_can_create_a_complete_application
@@ -123,7 +125,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
 
     assert page.has_content? "high"
   end
-  
+
   private
 
   def navigate_to_application_form
