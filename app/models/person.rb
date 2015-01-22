@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  validates_uniqueness_of :user_id
+  # validates_uniqueness_of :user_id
   has_many :applications
 
   def self.editable_attributes
@@ -7,6 +7,7 @@ class Person < ActiveRecord::Base
   end
 
   def self.find_or_create_user_from(auth)
+    Rails.logger.info("got omniauth auth data: #{auth.inspect}")
     person = find_or_create_by(provider: auth.provider, uid: auth.uid)
 
     person.provider     = auth.provider
