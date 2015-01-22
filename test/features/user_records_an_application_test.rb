@@ -44,13 +44,13 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   end
 
   def test_user_can_view_the_details_of_an_application
-    user = create(:person)
-    app = user.applications.create!(company: "Basecamp",
+    person = create(:person)
+    app = person.applications.create!(company: "Basecamp",
                                     url: "http://basecamp.com",
                                     location: "Chicago, IL",
                                     status: "applied")
 
-    page.set_rack_session(user_id: user.id)
+    page.set_rack_session(user_id: person.id)
     visit dashboard_path
     within("#application_#{app.id}") do
       click_link_or_button app.company
@@ -76,8 +76,8 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   end
 
   def test_user_can_add_contact_info_to_an_application
-    user = create(:person)
-    page.set_rack_session(user_id: user.id)
+    person = create(:person)
+    page.set_rack_session(user_id: person.id)
 
     visit dashboard_path
     click_link_or_button "new_application"
@@ -115,8 +115,8 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   private
 
   def navigate_to_application_form
-    user = create(:person)
-    page.set_rack_session(user_id: user.id)
+    person = create(:person)
+    page.set_rack_session(user_id: person.id)
     visit dashboard_path
     click_link_or_button "new_application"
   end
