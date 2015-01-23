@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :logged_in?
+  helper_method :current_user
 
   def logged_in?
     !!session[:user_id]
@@ -15,8 +16,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  helper_method :current_user
 
   def find_or_create_person
     Person.find_by(uid: current_user.uid)

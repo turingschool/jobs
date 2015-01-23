@@ -1,5 +1,4 @@
 class Person < ActiveRecord::Base
-  validates_uniqueness_of :user_id
   has_many :applications
 
   def self.editable_attributes
@@ -13,7 +12,7 @@ class Person < ActiveRecord::Base
     person.uid          = auth.uid
     person.first_name   = auth.info.name
     person.oauth_token  = auth.credentials.token
-    person.save
+    person.save!
 
     person
   end
