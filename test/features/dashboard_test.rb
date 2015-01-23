@@ -5,8 +5,8 @@ class Dashboard < ActionDispatch::IntegrationTest
     user = create(:person)
     create(:application, person_id: user.id)
     create(:application, status: "applied",
-    company: "quickleft",
-    person_id: user.id)
+                         company: "quickleft",
+                         person_id: user.id)
 
     page.set_rack_session(user_id: user.id)
     visit dashboard_path
