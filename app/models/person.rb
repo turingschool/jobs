@@ -1,5 +1,4 @@
 class Person < ActiveRecord::Base
-  validates_uniqueness_of :user_id
   has_many :applications
 
   def self.editable_attributes
@@ -7,14 +6,14 @@ class Person < ActiveRecord::Base
   end
 
   def self.find_or_create_user_from(auth)
-    user = find_or_create_by(provider: auth.provider, uid: auth.uid)
+    person = find_or_create_by(provider: auth.provider, uid: auth.uid)
 
-    user.provider     = auth.provider
-    user.uid          = auth.uid
-    user.first_name   = auth.info.name
-    user.oauth_token  = auth.credentials.token
-    user.save
+    person.provider     = auth.provider
+    person.uid          = auth.uid
+    person.first_name   = auth.info.name
+    person.oauth_token  = auth.credentials.token
+    person.save!
 
-    user
+    person
   end
 end
