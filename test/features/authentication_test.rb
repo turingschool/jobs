@@ -1,14 +1,10 @@
 require "./test/test_helper"
 
 class Authentication < ActionDispatch::IntegrationTest
-  # def setup
-  #   log_out
-  # end
-
   def test_person_can_log_in_from_omniauth
     person = create(:person)
     log_in(person)
-    visit "/"
+    visit root_path
 
     assert page.has_content? "Log out"
   end
@@ -25,13 +21,26 @@ class Authentication < ActionDispatch::IntegrationTest
 
   def test_log_in_only_shows_up_if_not_logged_in
     person = create(:person)
-    visit "/"
+    visit root_path
 
     assert page.has_content? "Log in with GitHub"
 
     page.set_rack_session(user_id: person.id)
-    visit "/"
+    visit root_path
 
     refute page.has_content? "Log in with GitHub"
+  end
+
+  def test_can_visit_the_root_path_without_authentication
+    visit root_path
+
+    assert page.has_content? "Log in with GitHub"
+  end
+
+  def test_can_visit_the_dashboard_if_authenticated
+    user = create(:person)
+    page.set_rack_session(user_id: user.id)
+    visit dashboard_path
+    assert current_path, dashboard_path
   end
 end

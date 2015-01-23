@@ -1,6 +1,6 @@
 require "./test/test_helper"
 
-class Filters < ActionDispatch::IntegrationTest
+class Dashboard < ActionDispatch::IntegrationTest
   def test_it_filters_by_status_in_columns
     user = create(:person)
     create(:application, person_id: user.id)
