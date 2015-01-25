@@ -1,11 +1,13 @@
-<div class="column">
-    <h2>Applied</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Company</th>
-        </tr>
-      </thead>
-      <%= render :partial => "application", :collection => @applied_applications %>
-    </table>
+<div class="applied">  
+  <div class="column">
+      <h2>Applied</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Company</th>
+          </tr>
+        </thead>
+        <%= render :partial => "application", :collection => @applied_applications %>
+      </table>
+  </div>
 </div>
