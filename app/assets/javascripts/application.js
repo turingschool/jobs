@@ -14,5 +14,3 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-
-$("#application_submit_btn").click(function(){window.close("windowName")})
