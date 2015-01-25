@@ -1,0 +1,14 @@
+<div class="in_progress">
+  <% if @in_progress_applications.any? %>
+  <h2>In Progress</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <%= render :partial => "application", :collection => @in_progress_applications %>
+    </table>
+  <% end %>
+</div>
