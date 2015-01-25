@@ -1,18 +1,26 @@
 class Application < ActiveRecord::Base
   validates_presence_of :company
-  validates_presence_of :status
+  validates :status, inclusion: { in: %w(to_apply in_progress applied closed) }
 
+  belongs_to :person
   has_many :steps
+  def self.priorities
+    %w(high medium low)
+  end
 
   def self.statuses
-    %W(open waiting dead icebox offered)
+    %w(to_apply in_progress applied closed)
+  end
+
+  def self.tiers
+    %w(safety good-fit reach)
+  end
+
+  def self.application_search(type)
+    where(status: type).order(:company)
   end
 
   def self.active
-    where.not(:status => 'dead').order(:company)
-  end
-
-  def self.dead
-    where(:status => 'dead').order(:company)
+    to_apply + in_progress + applied
   end
 end

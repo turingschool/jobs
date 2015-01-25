@@ -1,15 +1,20 @@
 class ApplicationsController < ApplicationController
+  before_filter :require_login
+
   def new
-    @app = current_person.applications.new(:status => Application.statuses.first)
+    @app = Application.new(url: params[:uri])
   end
 
   def create
-    @app = current_person.applications.new(
-      :company    => params[:application][:company],
-      :location   => params[:application][:location],
-      :url        => params[:application][:url],
-      :applied_on => params[:application][:applied_on],
-      :status     => params[:application][:status]
+    @app = current_user.applications.new(
+      company:      params[:application][:company],
+      location:     params[:application][:location],
+      url:          params[:application][:url],
+      applied_on:   params[:application][:applied_on],
+      status:       params[:application][:status],
+      contact_info: params[:application][:contact_info],
+      tier:         params[:application][:tier],
+      priority:     params[:application][:priority]
     )
 
     if @app.save
@@ -20,7 +25,7 @@ class ApplicationsController < ApplicationController
   end
 
   def show
-    @application = current_person.applications.find(params[:id])
+    @application = Application.find(params[:id])
   end
 
   def edit

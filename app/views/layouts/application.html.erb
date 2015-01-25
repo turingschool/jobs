@@ -14,22 +14,8 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/">
-            <% unless @creating_person %>
-              <%= current_person.first_name %>'s Jobs
-            <% end %>
-          </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/dashboard">Dashboard</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+
+    <%= render :partial => "partials/navbar" %>
 
     <div class="container theme-showcase" role="main">
       <%= yield %>

@@ -1,0 +1,47 @@
+<h1>
+    <%= @application.company %>
+  </h1>
+  <table class="table table-striped">
+    <tr>
+      <th>Location</th>
+      <td>
+        <%= @application.location %>
+      </td>
+    </tr>
+    <tr>
+      <th>URL</th>
+      <td>
+        <%= link_to @application.url, @application.url %>
+      </td>
+    </tr>
+    <tr>
+      <th>Applied On</th>
+      <td>
+        <%= @application.applied_on %>
+      </td>
+    </tr>
+    <tr>
+      <th>Tier</th>
+      <td>
+        <%= @application.tier %>
+      </td>
+    </tr>
+    <tr>
+      <th>Priority</th>
+      <td>
+        <%= @application.priority %>
+      </td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td>
+        <%= @application.status %>
+      </td>
+    </tr>
+    <tr>
+      <th>Contact Information</th>
+      <td>
+        <%= @application.contact_info %>
+      </td>
+    </tr>
+  </table>

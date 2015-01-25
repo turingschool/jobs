@@ -1,28 +1,13 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an ongoing project started by Turing School instructors and passed off to students.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* The goal of "Jobs" is to provide an organized and well-maintained system for keeping track of job applications.
+* Users can track the progress of their applications from To Apply to In Progress to Applied to Closed.
+* The app also provides access to a Bookmarklet that allows users to add URLs directly to their job application dashboard.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Functionality to add:
+
+* Search functionality so that users can see public comments about companies.
+* Email notifications if an "In Progress" application hasn't been opened recently.
