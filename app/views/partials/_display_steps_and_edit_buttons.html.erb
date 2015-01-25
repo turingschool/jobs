@@ -1,16 +1,16 @@
 <% @application.steps.order(:created_at).each do |step| %>
-    <div class="step <%= step.kind %>">
-      <h3>
-        <%= step.kind.humanize %>
-      </h3>
-      <%= markdown(step.note) %>
-      <ul class="actions">
-        <li>
-          <%= link_to "Edit", edit_application_step_path(@application, step), :id => "edit_step_#{step.id}" %>
-        </li>
-        <li>
-          <%= link_to "Delete", application_step_path(@application, step), :id => "delete_step_#{step.id}", :method => :delete %>
-        </li>
-      </ul>
-    </div>
-  <% end %>
+  <div class="step <%= step.kind %>">
+    <h3>
+      <%= step.kind.humanize %>
+    </h3>
+    <%= markdown(step.note) %>
+    <ul class="actions">
+      <li>
+        <%= link_to "Edit", edit_application_step_path(@application, step), :id => "edit_step_#{step.id}" %>
+      </li>
+      <li>
+        <%= link_to "Delete", application_step_path(@application, step), :id => "delete_step_#{step.id}", :method => :delete %>
+      </li>
+    </ul>
+  </div>
+<% end %>
