@@ -9,5 +9,5 @@
     <%= f.input :contact_info, label: "Contact Information", input_html: { class: 'autogrow', rows: 5, cols: 10 } %>
     <%= f.input :priority, as: :select, collection: Application.priorities %>
   <% end %>
-  <%= f.submit "Save" %>
+  <%= f.submit "Save", id: "application_submit_btn" %>
 <% end %>
