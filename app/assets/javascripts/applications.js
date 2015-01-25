@@ -13,7 +13,6 @@ $(document).ready(function() {
   .addClass( "ui-widget-header ui-corner-all" )
   .prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
 
-
   $( ".portlet-toggle" ).click(function() {
     var icon = $( this );
     icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
