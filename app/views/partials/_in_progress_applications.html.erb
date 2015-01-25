@@ -1,13 +1,6 @@
 <div class="in_progress">
   <div class="column">
     <h2>In Progress</h2>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Company</th>
-          </tr>
-        </thead>
-        <%= render :partial => "application", :collection => @in_progress_applications %>
-      </table>
+    <%= render :partial => "application", :collection => @in_progress_applications %>
   </div>
 </div>
