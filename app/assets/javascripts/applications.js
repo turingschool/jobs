@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   $( ".column" ).sortable({
     connectWith: ".column",
     handle: ".portlet-header",

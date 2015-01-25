@@ -1,14 +1,11 @@
-<div class="closed">
-  <% if @closed_applications.any? %>
+<div class="column">
     <h2>Closed</h2>
     <table class="table table-striped">
       <thead>
         <tr>
           <th>Company</th>
-          <th>Actions</th>
         </tr>
       </thead>
       <%= render :partial => "application", :collection => @closed_applications %>
     </table>
-  <% end %>
 </div>

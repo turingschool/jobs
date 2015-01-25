@@ -1,14 +1,11 @@
-<div class="applied">
-  <% if @applied_applications.any? %>
+<div class="column">
     <h2>Applied</h2>
     <table class="table table-striped">
       <thead>
         <tr>
           <th>Company</th>
-          <th>Actions</th>
         </tr>
       </thead>
       <%= render :partial => "application", :collection => @applied_applications %>
     </table>
-  <% end %>
 </div>
