@@ -8,21 +8,9 @@
     </li>
   </ul>
   <h2>Recorded Steps</h2>
+
   <%= button_to "Add a Step", new_application_step_path(@application), :id => 'add_step', :class => "btn btn-default", :method => :get %>
-  <% @application.steps.order(:created_at).each do |step| %>
-    <div class="step <%= step.kind %>">
-      <h3>
-        <%= step.kind.humanize %>
-      </h3>
-      <%= markdown(step.note) %>
-      <ul class="actions">
-        <li>
-          <%= link_to "Edit", edit_application_step_path(@application, step), :id => "edit_step_#{step.id}" %>
-        </li>
-        <li>
-          <%= link_to "Delete", application_step_path(@application, step), :id => "delete_step_#{step.id}", :method => :delete %>
-        </li>
-      </ul>
-    </div>
-  <% end %>
+
+  <%= render :partial => "partials/display_steps_and_edit_buttons" %>
+
 </div>
