@@ -1,10 +1,14 @@
 <tr class="application" id="application_<%= application.id %>">
   <th>
-    <%= link_to application.company, application %>
+    <div class="portlet">
+      <div class="portlet-header">
+        <%= link_to application.company, application %>
+      </div>
+
+      <div class="portlet-content">
+        <%= link_to 'edit', edit_application_path(application) %>
+        <%= link_to 'remove', application_path(application), :method => :delete %>
+      </div>
+    </div>
   </th>
-  
-  <td>
-    <%= link_to 'edit', edit_application_path(application) %>
-    <%= link_to 'remove', application_path(application), :method => :delete %>
-  </td>
 </tr>
