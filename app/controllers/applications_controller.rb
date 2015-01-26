@@ -2,6 +2,9 @@ class ApplicationsController < ApplicationController
   before_filter :require_login
   skip_before_filter :verify_authenticity_token
 
+  def index
+  end
+
   def new
     @app = Application.new(url: params[:uri])
     set_return_path
@@ -81,6 +84,8 @@ class ApplicationsController < ApplicationController
                                         :location,
                                         :url,
                                         :applied_on,
-                                        :status)
+                                        :status,
+                                        :position,
+                                        :notes)
   end
 end

@@ -99,6 +99,8 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     fill_in "application_location", with: "Chicago, IL"
     fill_in "application_url", with: "http://basecamp.com/jobs"
     fill_in "application_applied_on", with: Date.today
+    fill_in "application_position", with: "Rails Dev"
+    fill_in "application_notes", with: "OMG I want this JOB!"
   end
 
   def select_a_status
