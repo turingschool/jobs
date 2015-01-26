@@ -10,6 +10,29 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     assert_equal query_parameter, find_field("URL of the Job Posting").value
   end
 
+  def test_user_redirects_to_confirmation_message_from_bookmarklet_application_form
+    query_parameter = "true"
+    sign_in_to_site
+
+    visit new_application_path(bookmarklet: query_parameter)
+    fill_in_all_application_form_fields
+    select_a_status
+    save_application
+    save_and_open_page
+
+    assert page.has_content? 'Your application has been submitted!'
+  end
+
+  def test_user_redirects_to_dashboard_from_site_application_form
+    navigate_to_application_form
+
+    fill_in_all_application_form_fields
+    select_a_status
+    save_application
+
+    assert current_path, dashboard_path
+  end
+
   def test_user_can_create_an_application
     navigate_to_application_form
 
@@ -59,6 +82,11 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   end
 
   private
+
+  def sign_in_to_site
+    person = create(:person)
+    page.set_rack_session(user_id: person.id)
+  end
 
   def navigate_to_application_form
     person = create(:person)
