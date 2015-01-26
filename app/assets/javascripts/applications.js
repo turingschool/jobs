@@ -9,7 +9,7 @@ $(document).ready(function() {
       var status = $(this).data('status');
       $.ajax({
         type: "PUT",
-        url: "http://localhost:3000/applications/" + applicationId + "?application[status]=" + status
+        url: "http://localhost:3000/applications/" + applicationId + "?status=" + status
       });
     }
   });
