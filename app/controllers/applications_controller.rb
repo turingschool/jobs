@@ -2,8 +2,7 @@ class ApplicationsController < ApplicationController
   before_filter :require_login, except: [:new]
 
   def new
-    session[:uri] = params[:uri] if params[:uri]
-    url = params[:uri] || session[:uri]
+    set_session_uri
     @app = Application.new(url: url)
     set_return_path
   end
@@ -25,7 +24,7 @@ class ApplicationsController < ApplicationController
     else
       render :new
     end
-    session[:uri] = ""
+    clear_session_uri
   end
 
   def show
@@ -65,12 +64,32 @@ class ApplicationsController < ApplicationController
   private
 
   def set_return_path
-    if params[:bookmarklet] && current_user
+    if from_bookmarklet_and_logged_in?
       session[:return_to] = application_submission_confirmation_path
-    elsif params[:bookmarklet]
+    elsif from_bookmarklet?
       session[:return_to] = new_application_path(bookmarklet: true)
     else
       session[:return_to] = dashboard_path
     end
+  end
+
+  def from_bookmarklet_and_logged_in?
+    params[:bookmarklet] && current_user
+  end
+
+  def from_bookmarklet?
+    params[:bookmarklet]
+  end
+
+  def clear_session_uri
+    session[:uri] = ""
+  end
+
+  def set_session_uri
+    session[:uri] = params[:uri] if params[:uri]
+  end
+
+  def url
+    params[:uri] || session[:uri]
   end
 end
