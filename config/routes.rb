@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   get "/auth/github/callback", to: "sessions#create"
   delete "/logout" => "sessions#destroy", as: :logout
+
+  get "/application/submission_confirmation", to: "applications#submission_confirmation"
 end

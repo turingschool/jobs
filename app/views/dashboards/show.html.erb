@@ -5,67 +5,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <div class="to_apply">
-        <h2>To Apply</h2>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Company</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <%= render :partial => "application", :collection => @to_apply_applications %>
-          </table>
-          <hr/>
-      </div>
+      <%= render :partial => "partials/to_apply_applications" %>
     </div>
     <div class="col-md-3">
-      <div class="in_progress">
-        <% if @in_progress_applications.any? %>
-        <h2>In Progress</h2>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <%= render :partial => "application", :collection => @in_progress_applications %>
-        </table>
-        <% end %>
-      </div>
+      <%= render :partial => "partials/in_progress_applications" %>
     </div>
     <div class="col-md-3">
-      <div class="applied">
-        <% if @applied_applications.any? %>
-        <h2>Applied</h2>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <%= render :partial => "application", :collection => @applied_applications %>
-        </table>
-        <% end %>
-      </div>
+      <%= render :partial => "partials/applied_applications" %>
     </div>
     <div class="col-md-3">
-      <div class="closed">
-        <% if @closed_applications.any? %>
-        <h2>Closed</h2>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <%= render :partial => "application", :collection => @closed_applications %>
-        </table>
-        <% end %>
-      </div>
+      <%= render :partial => "partials/closed_applications" %>
     </div>
   </div>
 </div>
