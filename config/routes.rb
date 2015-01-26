@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   get "/login" => redirect("/auth/github"), as: :login
-  
 
   put "/applications/:id", to: "applications#edit"
 
