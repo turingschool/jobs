@@ -4,6 +4,7 @@ class ApplicationsController < ApplicationController
 
   def new
     @app = Application.new(url: params[:uri])
+    set_return_path
   end
 
   def create
@@ -17,7 +18,8 @@ class ApplicationsController < ApplicationController
       tier:         params[:application][:tier],
       priority:     params[:application][:priority]
     )
-    save_or_render_new
+
+    save_or_render_new_for_bookmarklet
   end
 
   def show
@@ -47,10 +49,31 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def save_or_render_new_for_bookmarklet
+    if @app.save
+      redirect_to session[:return_to]
+    else
+      render :new
+    end
+  end
+
   def destroy
     @app = current_person.applications.find(params[:id])
     @app.destroy
     redirect_to dashboard_path
+  end
+
+  def submission_confirmation
+  end
+
+  private
+
+  def set_return_path
+    if params[:bookmarklet]
+      session[:return_to] = application_submission_confirmation_path
+    else
+      session[:return_to] = dashboard_path
+    end
   end
 
   def application_params
