@@ -18,7 +18,6 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     fill_in_all_application_form_fields
     select_a_status
     save_application
-    save_and_open_page
 
     assert page.has_content? "Your application has been submitted!"
   end

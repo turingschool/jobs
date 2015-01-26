@@ -1,13 +1,6 @@
 <div class="to_apply">
-  <h2>To Apply</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Company</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <%= render :partial => "application", :collection => @to_apply_applications %>
-    </table>
-    <hr/>
+  <div class="column" data-status="to_apply">
+    <h2>To Apply</h2>
+    <%= render :partial => "application", :collection => @to_apply_applications %>
+  </div>
 </div>

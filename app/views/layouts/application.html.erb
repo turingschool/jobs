@@ -7,9 +7,15 @@
     <title>Turing - Jobs</title>
 
     <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
     <%= stylesheet_link_tag    "http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap-theme.min.css" %>
-    <%= stylesheet_link_tag    "http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" %>
-    <%= javascript_include_tag "vendor/" %>
+    <%= javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" %>
+
+    <%= stylesheet_link_tag    "http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" %>
+    <%= javascript_include_tag "//code.jquery.com/jquery-1.10.2.js" %>
+    <%= javascript_include_tag "//code.jquery.com/ui/1.11.2/jquery-ui.js" %>
+    <%= stylesheet_link_tag    "http://jqueryui.com/resources/demos/style.css" %>
+
     <%= csrf_meta_tags %>
   </head>
 
@@ -19,6 +25,5 @@
       <%= yield %>
     </div>
 
-    <%= javascript_include_tag "application" %>
   </body>
 </html>
