@@ -1,5 +1,6 @@
 class ApplicationsController < ApplicationController
   before_filter :require_login, except: [:new]
+  skip_before_filter :verify_authenticity_token
 
   def new
     set_session_url
@@ -19,12 +20,7 @@ class ApplicationsController < ApplicationController
       priority:     params[:application][:priority]
     )
 
-    if @app.save
-      redirect_to session[:return_to]
-    else
-      render :new
-    end
-    clear_session_url
+    save_or_render_new_for_bookmarklet
   end
 
   def show
@@ -38,14 +34,25 @@ class ApplicationsController < ApplicationController
   def update
     @app = current_person.applications.find(params[:id])
 
-    @app.company    = params[:application][:company]
-    @app.location   = params[:application][:location]
-    @app.url        = params[:application][:url]
-    @app.applied_on = params[:application][:applied_on]
-    @app.status     = params[:application][:status]
+    if params[:status]
+      @app.update_attributes(status: params[:status])
+    else
+      @app.update_attributes(application_params)
+    end
+    save_or_render_new
+  end
 
+  def save_or_render_new
     if @app.save
-      redirect_to application_path(@app)
+      redirect_to dashboard_path
+    else
+      render :new
+    end
+  end
+
+  def save_or_render_new_for_bookmarklet
+    if @app.save
+      redirect_to session[:return_to]
     else
       render :new
     end
@@ -58,7 +65,6 @@ class ApplicationsController < ApplicationController
   end
 
   def submission_confirmation
-
   end
 
   private
@@ -91,5 +97,13 @@ class ApplicationsController < ApplicationController
 
   def url
     params[:url] || session[:url]
+  end
+
+  def application_params
+    params.require(:application).permit(:company,
+                                        :location,
+                                        :url,
+                                        :applied_on,
+                                        :status)
   end
 end
