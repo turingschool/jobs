@@ -3,11 +3,7 @@ class ApplicationsController < ApplicationController
 
   def new
     @app = Application.new(url: params[:uri])
-    if params[:bookmarklet]
-      session[:return_to] = application_submission_confirmation_path
-    else
-      session[:return_to] = dashboard_path
-    end
+    set_return_path
   end
 
   def create
@@ -61,5 +57,14 @@ class ApplicationsController < ApplicationController
 
   def submission_confirmation
 
+  end
+
+  private
+  def set_return_path
+    if params[:bookmarklet]
+      session[:return_to] = application_submission_confirmation_path
+    else
+      session[:return_to] = dashboard_path
+    end
   end
 end
