@@ -4,10 +4,14 @@ $(document).ready(function() {
     handle: ".portlet-header",
     cancel: ".portlet-toggle",
     placeholder: "portlet-placeholder ui-corner-all",
-    receive: function (event, ui) { $.ajax({
-      type: "PUT",
-      url: "http://localhost:3000/applications/:id",
-      data: { status: $(this).find('h2').text() }}) }
+    receive: function (event, ui) {
+      var applicationId = $(ui.item).data('application-id');
+      var status = $(this).data('status');
+      $.ajax({
+        type: "PUT",
+        url: "http://localhost:3000/applications/" + applicationId + "?application[status]=" + status
+      });
+    }
   });
 
 

@@ -1,5 +1,6 @@
 class ApplicationsController < ApplicationController
   before_filter :require_login
+  skip_before_filter  :verify_authenticity_token
 
   def new
     @app = Application.new(url: params[:uri])
