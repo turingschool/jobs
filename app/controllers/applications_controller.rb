@@ -17,12 +17,7 @@ class ApplicationsController < ApplicationController
       tier:         params[:application][:tier],
       priority:     params[:application][:priority]
     )
-
-    if @app.save
-      redirect_to dashboard_path
-    else
-      render :new
-    end
+    save_or_render_new
   end
 
   def show
@@ -40,14 +35,13 @@ class ApplicationsController < ApplicationController
       @app.update_attributes(status: params[:status])
     else
       @app.update_attributes(application_params)
-      # @app.location   = params[:application][:location]
-      # @app.url        = params[:application][:url]
-      # @app.applied_on = params[:application][:applied_on]
-      # @app.status     = params[:application][:status]
     end
-    
+    save_or_render_new
+  end
+
+  def save_or_render_new
     if @app.save
-      redirect_to application_path(@app)
+      redirect_to dashboard_path
     else
       render :new
     end
