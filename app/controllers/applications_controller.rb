@@ -1,7 +1,9 @@
 class ApplicationsController < ApplicationController
-  before_filter :require_login
+  before_filter :require_login, except: [:new]
 
   def new
+    session[:uri] = params[:uri]
+    session[:return_to] = new_application_path
     @app = Application.new(url: params[:uri])
   end
 
@@ -9,7 +11,7 @@ class ApplicationsController < ApplicationController
     @app = current_user.applications.new(
       company:      params[:application][:company],
       location:     params[:application][:location],
-      url:          params[:application][:url],
+      url:          session[:uri] = params[:uri] || params[:application][:url],
       applied_on:   params[:application][:applied_on],
       status:       params[:application][:status],
       contact_info: params[:application][:contact_info],
@@ -22,6 +24,8 @@ class ApplicationsController < ApplicationController
     else
       render :new
     end
+    session[:uri] = params[:uri]
+    session.delete(:uri)
   end
 
   def show

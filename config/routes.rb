@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   get "/login" => redirect("/auth/github"), as: :login
+  
 
   get "/auth/github/callback", to: "sessions#create"
   delete "/logout" => "sessions#destroy", as: :logout

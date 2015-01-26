@@ -25,11 +25,11 @@
             <li><a href="/dashboard">Dashboard</a></li>
             <% if Rails.env.development? %>
               <li><a href="javascript:window.open('http://localhost:3000'+'/applications/new?uri='
-                +encodeURIComponent(location.href), 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
+                +encodeURIComponent(location.href), 'windowName', 'width=800,height=500,resizable,scrollbars=yes,status=1');">
               Create Application Bookmarklet</a> <p> Drag to Your Favorites To Add Applications From External Websites </p></li>
             <%else%>
               <li><a href="javascript:window.open('https://jobs-turing.herokuapp.com'+'/applications/new?uri='
-                +encodeURIComponent(location.href), 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
+                +encodeURIComponent(location.href), 'windowName', 'width=800,height=500,resizable,scrollbars=yes,status=1');">
               Create Application Bookmarklet</a> <p> Drag to Your Favorites To Add Applications From External Websites </p></li>
             <% end %>
             <% if logged_in? %>
