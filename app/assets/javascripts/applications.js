@@ -4,8 +4,12 @@ $(document).ready(function() {
     handle: ".portlet-header",
     cancel: ".portlet-toggle",
     placeholder: "portlet-placeholder ui-corner-all",
-    receive: function (event, ui) { alert("You dragged me into \"" + $(this).find('h2').text() + "\""); }
+    receive: function (event, ui) { $.ajax({
+      type: "PUT",
+      url: "http://localhost:3000/applications/:id",
+      data: { status: $(this).find('h2').text() }}) }
   });
+
 
   $( ".portlet" )
   .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
