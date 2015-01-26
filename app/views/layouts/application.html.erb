@@ -14,34 +14,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/">
-          </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/dashboard">Dashboard</a></li>
-            <% if Rails.env.development? %>
-              <li><a href="javascript:window.open('http://localhost:3000'+'/applications/new?uri='
-                +encodeURIComponent(location.href)+'&bookmarklet=true', 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
-              Create Application Bookmarklet</a> <p> Drag to Your Favorites To Add Applications From External Websites </p></li>
-            <%else%>
-              <li><a href="javascript:window.open('https://jobs-turing.herokuapp.com'+'/applications/new?uri='
-                +encodeURIComponent(location.href), 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
-              Create Application Bookmarklet</a> <p> Drag to Your Favorites To Add Applications From External Websites </p></li>
-            <% end %>
-            <% if logged_in? %>
-              <li><%= link_to "Log out", logout_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to "Log in with GitHub", login_path %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
+    <%= render :partial => "partials/navbar" %>
     <div class="container theme-showcase" role="main">
       <%= yield %>
     </div>
