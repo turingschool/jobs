@@ -3,6 +3,7 @@ class ApplicationsController < ApplicationController
 
   def new
     @app = Application.new(url: params[:uri])
+    set_return_path
   end
 
   def create
@@ -18,7 +19,7 @@ class ApplicationsController < ApplicationController
     )
 
     if @app.save
-      redirect_to dashboard_path
+      redirect_to session[:return_to]
     else
       render :new
     end
@@ -52,5 +53,19 @@ class ApplicationsController < ApplicationController
     @app = current_person.applications.find(params[:id])
     @app.destroy
     redirect_to dashboard_path
+  end
+
+  def submission_confirmation
+
+  end
+
+  private
+
+  def set_return_path
+    if params[:bookmarklet]
+      session[:return_to] = application_submission_confirmation_path
+    else
+      session[:return_to] = dashboard_path
+    end
   end
 end
