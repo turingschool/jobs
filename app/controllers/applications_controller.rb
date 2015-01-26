@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
   before_filter :require_login
-  
+
   def index
   end
 
@@ -37,6 +37,8 @@ class ApplicationsController < ApplicationController
     @app = current_person.applications.find(params[:id])
 
     @app.company    = params[:application][:company]
+    @app.notes      = params[:application][:notes]
+    @app.position   = params[:application][:position]
     @app.location   = params[:application][:location]
     @app.url        = params[:application][:url]
     @app.applied_on = params[:application][:applied_on]

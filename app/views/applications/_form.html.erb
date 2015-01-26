@@ -5,7 +5,9 @@
     <%= f.input :url, :label => "URL of the Job Posting" %>
     <%= f.input :applied_on, :as => :string, :input_html => { :value => Date.today } %>
     <%= f.input :status, :as => :select, :collection => Application.statuses %>
+    <%= f.input :position, label: "Position" %>
     <%= f.input :contact_info, label: "Contact Information", :input_html => { :class => 'autogrow', :rows => 5, :cols => 10 } %>
+    <%= f.input :notes, label: "Notes" %>
   <% end %>
   <%= f.submit "Save" %>
 <% end %>
