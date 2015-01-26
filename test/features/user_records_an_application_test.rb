@@ -10,7 +10,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     assert_equal query_parameter, find_field("URL of the Job Posting").value
   end
 
-  def test_user_redirects_to_confirmation_message_from_bookmarklet_application_form
+  def test_user_redirects_to_confirm_msg_from_bookmarklet_application_form
     query_parameter = "true"
     sign_in_to_site
 
@@ -20,7 +20,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     save_application
     save_and_open_page
 
-    assert page.has_content? 'Your application has been submitted!'
+    assert page.has_content? "Your application has been submitted!"
   end
 
   def test_user_redirects_to_dashboard_from_site_application_form

@@ -60,6 +60,7 @@ class ApplicationsController < ApplicationController
   end
 
   private
+
   def set_return_path
     if params[:bookmarklet]
       session[:return_to] = application_submission_confirmation_path
