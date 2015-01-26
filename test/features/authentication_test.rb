@@ -47,7 +47,7 @@ class Authentication < ActionDispatch::IntegrationTest
   def test_user_is_prompted_to_log_in_from_bookmarklet_window
     query_parameter = "google.com/jobs/1"
 
-    visit new_application_path(uri: query_parameter)
+    visit new_application_path(url: query_parameter)
 
     assert page.has_content? "Log in with GitHub"
   end

@@ -2,7 +2,7 @@ class ApplicationsController < ApplicationController
   before_filter :require_login, except: [:new]
 
   def new
-    set_session_uri
+    set_session_url
     @app = Application.new(url: url)
     set_return_path
   end
@@ -24,7 +24,7 @@ class ApplicationsController < ApplicationController
     else
       render :new
     end
-    clear_session_uri
+    clear_session_url
   end
 
   def show
@@ -81,15 +81,15 @@ class ApplicationsController < ApplicationController
     params[:bookmarklet]
   end
 
-  def clear_session_uri
-    session[:uri] = ""
+  def clear_session_url
+    session[:url] = ""
   end
 
-  def set_session_uri
-    session[:uri] = params[:uri] if params[:uri]
+  def set_session_url
+    session[:url] = params[:url] if params[:url]
   end
 
   def url
-    params[:uri] || session[:uri]
+    params[:url] || session[:url]
   end
 end
