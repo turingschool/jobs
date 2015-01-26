@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
   before_filter :require_login
-  skip_before_filter  :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token
 
   def new
     @app = Application.new(url: params[:uri])
@@ -77,6 +77,10 @@ class ApplicationsController < ApplicationController
   end
 
   def application_params
-    params.require(:application).permit(:company, :location, :url, :applied_on, :status)
+    params.require(:application).permit(:company,
+                                        :location,
+                                        :url,
+                                        :applied_on,
+                                        :status)
   end
 end
