@@ -5,7 +5,7 @@
 
   <div class="portlet-content">
     <% if application.stale? %>
-      <p class="stale_message">"Application hasn't been updated in over 5 days</p>
+      <p class="stale_message">"Application hasn't been updated in over 5 days"</p>
     <% end %>
     <%= link_to 'edit', edit_application_path(application) %>
     <%= link_to 'remove', application_path(application), :method => :delete %>

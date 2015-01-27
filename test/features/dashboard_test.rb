@@ -21,4 +21,14 @@ class Dashboard < ActionDispatch::IntegrationTest
       refute page.has_content? "quickleft"
     end
   end
+
+  def test_it_detects_when_an_application_becomes_stale
+    user = create(:person)
+    app = create(:application, updated_at: DateTime.now.utc.beginning_of_day - 5.days, person_id: user.id )
+
+    page.set_rack_session(user_id: user.id)
+    visit dashboard_path
+
+    assert page.has_content? "Application hasn't been updated in over 5 days"
+  end
 end
