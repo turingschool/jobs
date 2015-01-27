@@ -23,10 +23,11 @@ class Dashboard < ActionDispatch::IntegrationTest
   end
 
   def test_it_detects_when_an_application_becomes_stale
+    stale_app_date = DateTime.now.utc.beginning_of_day - 5.days
     user = create(:person)
     user.applications.create(company: "Basecamp",
                              status: "applied",
-                             updated_at: DateTime.now.utc.beginning_of_day - 5.days
+                             updated_at: stale_app_date
                             )
 
     page.set_rack_session(user_id: user.id)
