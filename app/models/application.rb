@@ -23,4 +23,9 @@ class Application < ActiveRecord::Base
   def self.active
     to_apply + in_progress + applied
   end
+
+  def stale?
+    stale_date = DateTime.now.utc.beginning_of_day - 5.days
+    created_at <= stale_date
+  end
 end

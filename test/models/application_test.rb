@@ -28,4 +28,10 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_equal closed1, Application.application_search("closed").first
     assert_equal closed2, Application.application_search("closed").last
   end
+
+  def test_it_recognizes_when_an_application_becomes_stale_after_five_days
+    application = create(:application,
+                         created_at: DateTime.now.utc.beginning_of_day - 5.days)
+    assert application.stale?
+  end
 end
