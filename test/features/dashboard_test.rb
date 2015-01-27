@@ -24,10 +24,10 @@ class Dashboard < ActionDispatch::IntegrationTest
 
   def test_it_detects_when_an_application_becomes_stale
     user = create(:person)
-    app = user.applications.create(company: "Basecamp",
-                                   status: "applied",
-                                   updated_at: DateTime.now.utc.beginning_of_day - 5.days
-                                  )
+    user.applications.create(company: "Basecamp",
+                             status: "applied",
+                             updated_at: DateTime.now.utc.beginning_of_day - 5.days
+                            )
 
     page.set_rack_session(user_id: user.id)
     visit dashboard_path
