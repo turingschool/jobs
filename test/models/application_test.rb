@@ -31,7 +31,7 @@ class ApplicationTest < ActiveSupport::TestCase
 
   def test_it_recognizes_when_an_application_becomes_stale_after_five_days
     application = create(:application,
-                         created_at: DateTime.now.utc.beginning_of_day - 5.days)
+                         updated_at: DateTime.now.utc.beginning_of_day - 5.days)
     assert application.stale?
   end
 end
