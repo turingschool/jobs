@@ -6,6 +6,7 @@ class ApplicationsController < ApplicationController
     set_session_url
     @app = Application.new(url: url)
     set_return_path
+    clear_session_url if from_bookmarklet_and_logged_in?
   end
 
   def create
