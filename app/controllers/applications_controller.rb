@@ -21,6 +21,7 @@ class ApplicationsController < ApplicationController
     )
 
     save_or_render_new_for_bookmarklet
+    clear_session_url
   end
 
   def show
