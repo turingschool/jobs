@@ -5,7 +5,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     query_parameter = "google.com/jobs/1"
 
     navigate_to_application_form
-    visit new_application_path(uri: query_parameter)
+    visit new_application_path(url: query_parameter)
 
     assert_equal query_parameter, find_field("URL of the Job Posting").value
   end
