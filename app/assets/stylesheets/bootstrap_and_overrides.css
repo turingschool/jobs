@@ -9,3 +9,19 @@
 .theme-showcase{
   padding-top: 5em;
 }
+
+.navbar p {
+  color: white;
+}
+
+#body {
+  background-repeat: no-repeat;
+  background-image:url(http://www.entrepreneurhandbook.co.uk/wp-content/uploads/2013/11/Working-with-Developers.jpg);
+  background-size:cover;
+}
+
+#home_title {
+  margin-top: 96px;
+  color: white;
+  font-size: 8em;
+}

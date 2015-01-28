@@ -1,0 +1,20 @@
+<h1> Your Jobs Dashboard </h1>
+
+<%= button_to "Create a New Application", new_application_path, :id => "new_application", :class => "btn btn-default", :method => :get %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render :partial => "partials/to_apply_applications" %>
+    </div>
+    <div class="col-md-3">
+      <%= render :partial => "partials/in_progress_applications" %>
+    </div>
+    <div class="col-md-3">
+      <%= render :partial => "partials/applied_applications" %>
+    </div>
+    <div class="col-md-3">
+      <%= render :partial => "partials/closed_applications" %>
+    </div>
+  </div>
+</div>

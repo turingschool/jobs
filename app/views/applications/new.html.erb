@@ -1,0 +1,7 @@
+<% if logged_in? %>
+  <h2 id="create_application">Create an Application</h2>
+  <%= render :partial => 'form' %>
+<% else %>
+  <h6> Please Login Before Submitting Applications </h6>
+  <li><%= link_to "Log in with GitHub", login_path %></li>
+<% end %>

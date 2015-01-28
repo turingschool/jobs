@@ -1,0 +1,16 @@
+<div class="application">
+
+  <%= render :partial => "partials/company_details_table" %>
+
+  <ul class="actions">
+    <li>
+      <%= link_to "Edit", edit_application_path(@application), :id => "edit_application_#{@application.id}" %>
+    </li>
+  </ul>
+  <h2>Recorded Steps</h2>
+
+  <%= button_to "Add a Step", new_application_step_path(@application), :id => 'add_step', :class => "btn btn-default", :method => :get %>
+
+  <%= render :partial => "partials/display_steps_and_edit_buttons" %>
+
+</div>
