@@ -4,7 +4,7 @@ class Authentication < ActionDispatch::IntegrationTest
   def test_person_can_log_in_from_omniauth
     person = create(:person)
     log_in(person)
-    visit root_path
+    visit dashboard_path
 
     assert page.has_content? "Log out"
   end
@@ -26,7 +26,7 @@ class Authentication < ActionDispatch::IntegrationTest
     assert page.has_content? "Log in with GitHub"
 
     page.set_rack_session(user_id: person.id)
-    visit root_path
+    visit dashboard_path
 
     refute page.has_content? "Log in with GitHub"
   end
