@@ -2,6 +2,9 @@ class ApplicationsController < ApplicationController
   before_filter :require_login, except: [:new]
   skip_before_filter :verify_authenticity_token
 
+  def index
+  end
+
   def new
     set_session_url
     @app = Application.new(url: url)
@@ -106,6 +109,8 @@ class ApplicationsController < ApplicationController
                                         :location,
                                         :url,
                                         :applied_on,
-                                        :status)
+                                        :status,
+                                        :position,
+                                        :notes)
   end
 end
