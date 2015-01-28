@@ -16,11 +16,7 @@
             +encodeURIComponent(location.href), 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
             Create Application Bookmarklet</a> <p> Drag to Your Favorites To Add Applications From External Websites </p></li>
         <% end %>
-        <% if logged_in? %>
           <li><%= link_to "Log out", logout_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Log in with GitHub", login_path %></li>
-        <% end %>
       </ul>
     </div>
   </div>
