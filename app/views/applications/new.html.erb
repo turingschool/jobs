@@ -2,6 +2,6 @@
   <h2 id="create_application">Create an Application</h2>
   <%= render :partial => 'form' %>
 <% else %>
-  <h6> Please Login Before Submitting Applications </h6>
-  <li><%= link_to "Log in with GitHub", login_path %></li>
+  <h6 id="bookmarklet_login_msg"> Please Login Before Submitting Applications </h6>
+  <%= link_to "Log in with GitHub", login_path, class: "btn btn-primary" %>
 <% end %>
