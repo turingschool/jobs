@@ -10,9 +10,7 @@ class UserInteractsWithAnApplication < ActionDispatch::IntegrationTest
 
     page.set_rack_session(user_id: person.id)
     visit dashboard_path
-    within("#application_#{app.id}") do
-      click_link_or_button app.company
-    end
+    click_link_or_button app.company
 
     assert page.has_content? app.url
   end
