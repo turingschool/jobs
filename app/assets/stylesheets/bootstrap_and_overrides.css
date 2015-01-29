@@ -88,3 +88,11 @@
 .application-form {
   font-size: 3em;
 }
+
+#bookmarklet_login_msg {
+  margin-top: 30px;
+}
+
+#boommarklet_login_link {
+  font-size: 2em;
+}

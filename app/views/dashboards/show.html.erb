@@ -3,15 +3,9 @@
 </div>
 
 <div id="bookmarklet">
-  <% if Rails.env.development? %>
-    <a class="btn btn-default", style="padding-bottom: 3px, margin-top: 10px", href="javascript:window.open('http://localhost:3000'+'/applications/new?url='
-    +encodeURIComponent(location.href)+'&bookmarklet=true', 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
-    Drag to Your Favorites Bar to Add Applications From Any Page</a></li>
-  <%else%>
-    <a class="btn btn-default", style="padding-bottom: 3px, margin-top: 10px", href="javascript:window.open('https://jobs-turing.herokuapp.com'+'/applications/new?url='
-    +encodeURIComponent(location.href)+'&bookmarklet=true', 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
-    Drag to Your Favorites Bar to Add Applications From Any Page</a></li>
-  <% end %>
+  <a class="btn btn-default", style="padding-bottom: 3px", href="javascript:window.open('http://localhost:3000'+'/applications/new?url='
+  +encodeURIComponent(location.href)+'&bookmarklet=true', 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
+  Drag to Your Favorites Bar to Add Applications From Any Page</a></li>
 </div>
 
 <div class="container">
