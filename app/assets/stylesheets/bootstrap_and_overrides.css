@@ -54,3 +54,25 @@
   color: white;
   font-size: 8em;
 }
+
+.dboard_link {
+  font-size: 3em;
+  color: white;
+}
+
+#bookmarklet {
+  display: inline-block;
+  margin-left:30px;
+  float: right;
+  margin-top: 14px;
+}
+
+#create_application_btn {
+  display: inline-block;
+
+}
+
+#bookmarklet_help_txt {
+  margin-top: 5px;
+  margin-left: 5px;
+}
