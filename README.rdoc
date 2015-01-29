@@ -10,4 +10,4 @@ This is an ongoing project started by Turing School instructors and passed off t
 Functionality to add:
 
 * Search functionality so that users can see public comments about companies.
-* Email notifications if an "In Progress" application hasn't been opened recently.
+* Email notifications if an "In Progress" application hasn't been opened recently
