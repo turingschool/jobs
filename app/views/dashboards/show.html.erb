@@ -1,7 +1,17 @@
-<h1> Your Jobs Dashboard </h1>
-
-<%= button_to "Create a New Application", new_application_path, :id => "new_application", :class => "btn btn-default", :method => :get %>
-
+<div id="create_application_btn">
+<%= button_to "Create a New Application", new_application_path, :id => "new_application", class: "btn-xs btn btn-default", :method => :get %>
+</div>
+<div id="bookmarklet">
+<% if Rails.env.development? %>
+  <a class="btn-xs btn btn-default" href="javascript:window.open('http://localhost:3000'+'/applications/new?url='
+  +encodeURIComponent(location.href)+'&bookmarklet=true', 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
+  Create Application Bookmarklet</a></br><p id="bookmarklet_help_txt">Drag to your favorites to add applications from any web page.</p></li>
+  <%else%>
+  <a href="javascript:window.open('https://jobs-turing.herokuapp.com'+'/applications/new?url='
+    +encodeURIComponent(location.href)+'&bookmarklet=true', 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
+    Create Application Bookmarklet</a> </li>
+    <% end %>
+  </div>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
