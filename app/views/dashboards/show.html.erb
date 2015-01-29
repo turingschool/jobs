@@ -2,7 +2,7 @@
 <%= button_to "Create a New Application", new_application_path, :id => "new_application", class: "btn-xs btn btn-default", :method => :get %>
 </div>
 <div id="bookmarklet">
-  <a class="btn-xs btn btn-default" href="javascript:window.open('http://localhost:3000'+'/applications/new?url='
+  <a class="btn-xs btn btn-default" href="javascript:window.open('<%= ENV['bookmarklet_base'] %>' +'/applications/new?url='
   +encodeURIComponent(location.href)+'&bookmarklet=true', 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
   Create Application Bookmarklet</a></br><p id="bookmarklet_help_txt">Drag to your favorites to add applications from any web page.</p></li>
 </div>
