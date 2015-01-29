@@ -12,8 +12,8 @@
           +encodeURIComponent(location.href)+'&bookmarklet=true', 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
           Create Application Bookmarklet</a> <p> Drag to Your Favorites To Add Applications From External Websites </p></li>
         <%else%>
-          <li><a href="javascript:window.open('https://jobs-turing.herokuapp.com'+'/applications/new?uri='
-            +encodeURIComponent(location.href), 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
+          <li><a href="javascript:window.open('https://jobs-turing.herokuapp.com'+'/applications/new?url='
+            +encodeURIComponent(location.href)+'&bookmarklet=true', 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
             Create Application Bookmarklet</a> <p> Drag to Your Favorites To Add Applications From External Websites </p></li>
         <% end %>
           <li><%= link_to "Log out", logout_path, method: :delete %></li>
