@@ -3,10 +3,10 @@
 </div>
 
 <div id="bookmarklet">
-  <a class="btn btn-default", style="padding-bottom: 3px", href="javascript:window.open('http://localhost:3000'+'/applications/new?url='
-  +encodeURIComponent(location.href)+'&bookmarklet=true', 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
-  Drag to Your Favorites Bar to Add Applications From Any Page</a></li>
-</div>
+  <a class="btn-xs btn btn-default", style="padding-bottom: 3px", href="javascript:window.open('<%= ENV['bookmarklet_base'] %>' +'/applications/new?url='
+    +encodeURIComponent(location.href)+'&bookmarklet=true', 'windowName', 'width=600,height=500,resizable,scrollbars=yes,status=1');">
+    Drag to Your Favorites Bar to Add Applications From Any Page</a></li>
+  </div>
 
 <div class="container">
   <div class="row">
