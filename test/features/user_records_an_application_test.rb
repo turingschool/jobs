@@ -19,7 +19,7 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     select_a_status
     save_application
 
-    assert page.has_content? "Your application has been submitted!"
+    assert page.has_content? "Your application has been added to your dashboard."
   end
 
   def test_user_redirects_to_dashboard_from_site_application_form
