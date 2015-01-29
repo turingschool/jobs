@@ -62,13 +62,14 @@
 
 #bookmarklet {
   display: inline-block;
-  margin-left:30px;
+  margin-top: 30px;
+  margin-left: 30px;
   float: right;
-  margin-top: 14px;
 }
 
 #create_application_btn {
   display: inline-block;
+  margin-top: 30px;
 }
 
 #bookmarklet_help_txt {
