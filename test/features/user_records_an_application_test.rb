@@ -1,6 +1,11 @@
 require './test/test_helper'
 
 class UserRecordsAnApplication < ActionDispatch::IntegrationTest
+
+  def setup
+    login_and_create_person!
+  end
+
   def test_user_creates_an_application
     visit dashboard_path
     click_link_or_button 'new_application'
@@ -31,7 +36,8 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
   def test_viewing_the_details_of_an_application
     app = Application.create!(:company => "Basecamp",
                               :url => "http://basecamp.com",
-                              :status => "open")
+                              :status => "open",
+                              :person_id => current_person.id)
 
     visit dashboard_path
     within("#application_#{app.id}") do
@@ -45,7 +51,8 @@ class UserRecordsAnApplication < ActionDispatch::IntegrationTest
     app = Application.create!(:company => "Basecamp",
                               :url => "http://basecamp.com",
                               :location => "Chicago, IL",
-                              :status => "open")
+                              :status => "open",
+                              :person_id => current_person.id)
 
     visit application_path(app)
     click_link_or_button("edit_application_#{app.id}")

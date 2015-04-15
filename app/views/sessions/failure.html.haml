@@ -1,0 +1,17 @@
+.layout-wrap
+  .mod-text
+    %h3.error Login unsuccessful...
+    - if @failure_message
+      %h3= "Your Oauth may have failed due to: \"#{@failure_message}\""
+
+    %h3 Possible issues:
+    %ul
+      %li Only Turing students in approved cohorts can use the application.
+      %li Make sure you're a member of one of the Turing org teams on GitHub.
+      %li Make sure you've accepted the invite to your Turing GitHub Team.
+      %li Make sure you're logging in with the correct GitHub account (the one attached to Turing)
+
+    %h4
+      %p= link_to "Try logging in again", login_path
+      %p= link_to "Home", root_path
+
