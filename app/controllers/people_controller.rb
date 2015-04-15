@@ -13,7 +13,7 @@ class PeopleController < ApplicationController
   end
 
   def create
-    @person = Person.new(:github_user_id => current_user.github_id)
+    @person = Person.new(:user_github_id => current_user.github_id)
     Person.editable_attributes.each do |attr|
       @person.send("#{attr}=", params[:person][attr])
     end
