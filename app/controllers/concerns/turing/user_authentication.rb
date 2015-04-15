@@ -22,10 +22,6 @@ module Turing
 
     private
 
-    def find_or_create_person
-      Person.where(:user_id => current_user.id).first || redirect_to(new_person_path)
-    end
-
     def require_login
       current_user
     rescue Jsl::Identity::ResourceNotFound

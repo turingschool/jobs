@@ -1,8 +1,19 @@
 class ApplicationController < ActionController::Base
+  include TuringAuth::CurrentUser
   protect_from_forgery with: :exception
 
-  Deject self, :user_repository
-  include Turing::UserAuthentication
   before_action :require_login
-  before_action :require_invitation_or_admin
+
+  def current_person
+    @current_person ||= find_or_create_person
+  end
+  helper_method :current_person
+
+  def find_or_create_person
+    Person.where(:user_github_id => current_user.github_id).first || redirect_to(new_person_path)
+  end
+
+  def require_login
+    redirect_to login_path unless current_user
+  end
 end
